@@ -6,6 +6,7 @@
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(ExplorePage) , typeof(ExplorePage));
+            Routing.RegisterRoute(nameof(ExplorePlacePage), typeof(ExplorePlacePage));
         }
     }
 }

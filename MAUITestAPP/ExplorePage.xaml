@@ -4,10 +4,8 @@
              x:Class="MAUITestAPP.ExplorePage"
              Title="ExplorePage"
              Shell.NavBarIsVisible="False">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <WebView x:Name="myWebView" Source="www/viewmap.html" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+    </Grid>
 </ContentPage>

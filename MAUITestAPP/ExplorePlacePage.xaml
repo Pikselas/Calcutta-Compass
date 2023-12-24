@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUITestAPP.ExplorePlacePage"
+             Title="ExplorePlacePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#280240">
+    
+    <VerticalStackLayout IsClippedToBounds="True">
+        
+        <Border HorizontalOptions="FillAndExpand" HeightRequest="350">
+            <Image x:Name="TopImage" Aspect="AspectFill"/>
+        </Border>
+        
+        <Border    
+            HeightRequest="465" BackgroundColor="#150c36" Margin="0,-55,0,0" StrokeShape="RoundRectangle 35,35,0,0" Stroke="Transparent">
+            
+            <Border.Shadow>
+                <Shadow Brush="Black"/>
+            </Border.Shadow>
+            <Grid>
+
+                <ScrollView WidthRequest="350" HeightRequest="350" Margin="0,0,0,100" Orientation="Horizontal">
+                    <HorizontalStackLayout Padding="10">
+                        <Border 
+                            StrokeShape="RoundRectangle 35,35,35,35"  
+                            Stroke="Transparent" 
+                            WidthRequest="250" Margin="15"
+                            >
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="1.25,0" EndPoint="1,0.9">
+                                    <GradientStop Color="#150c36" Offset="0.6" />
+                                    <GradientStop Color="#02057d" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Border Margin="15" Padding="10" Opacity="0.65" Stroke="Transparent"
+                                    BackgroundColor="Black"
+                                    StrokeShape="RoundRectangle 10,10,10,10">
+
+                                <VerticalStackLayout>
+                                    <Label Text="Title Item" FontAttributes="Bold" FontFamily="Monospace" TextColor="AliceBlue"/>
+                                    <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="DimGrey" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </Border>
+
+                        <Border Stroke="Transparent" BackgroundColor="Black" WidthRequest="250" Margin="15">
+
+                        </Border>
+                    </HorizontalStackLayout>
+
+                </ScrollView>
+                
+                <Border HeightRequest="70"
+                Margin="10,10,10,20"
+                StrokeShape="RoundRectangle 50,50,50,50"
+                BackgroundColor="#47bfff"
+                VerticalOptions="End"
+                Stroke="Transparent">
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#47fff6" Offset="0" />
+                            <GradientStop Color="#3d038a" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid>
+                        <Label Text="Explore in Map" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               FontFamily="Monospace"
+                               TextColor="WhiteSmoke"/>
+                        <ImageButton Source="next.png" HorizontalOptions="End" Margin="0,0,-15,0" Scale="0.95">
+                            <ImageButton.Shadow>
+                                <Shadow Brush="Black"/>
+                            </ImageButton.Shadow>
+                        </ImageButton>
+                    </Grid>
+
+                </Border>
+            </Grid>
+        </Border>
+         
+    </VerticalStackLayout>
+</ContentPage>
