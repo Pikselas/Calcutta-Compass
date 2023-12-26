@@ -20,8 +20,10 @@
                 directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.driving });
                 var waypoint1 = new Microsoft.Maps.Directions.Waypoint({ address: addrs_1 });
                 var waypoint2 = new Microsoft.Maps.Directions.Waypoint({ address: addrs_2 });
+
                 directionsManager.addWaypoint(waypoint1);
                 directionsManager.addWaypoint(waypoint2);
+
                 directionsManager.calculateDirections();
             });
         }

@@ -2,125 +2,81 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUITestAPP.MainPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="Beige">
 
     <Grid>
-        <Image Source="bg.jpg" Aspect="AspectFill" HorizontalOptions="Start" />
-        <ScrollView>
-            <VerticalStackLayout
-            Padding="50,50"
-                Spacing="25">
-
-            <Border 
-                    Stroke="Transparent"
-                    StrokeThickness="5" 
-                    StrokeShape="RoundRectangle 45,100,45,45" 
-                    Margin="10"
-                    >
-                <Border.Shadow>
-                        <Shadow Brush="#12e095" Radius="25" Offset="0,0"/>
-                </Border.Shadow>
-
-                <Grid>
-                    <Image Source="panel_bg_1.jpg" Aspect="AspectFill" HorizontalOptions="Start" Opacity="0.95"/>
-                    <VerticalStackLayout Padding="25">
-                        <Border 
-                            Scale="0.8" 
-                            StrokeShape="RoundRectangle 50,150,150,50"
-                            VerticalOptions="Center"
-                            >
-                                <Border.Shadow>
-                                    <Shadow Brush="Black" Radius="15"/>
-                                </Border.Shadow>
-                                <StackLayout>
-                                <Image Source="howrah_bridge.jpg"/>
-                            </StackLayout>
-                        </Border>
-                        <Label 
-                        Text="Explore Places" 
-                        TextColor="White" 
-                        Padding="10"
-                        Margin="10" FontSize="Medium" 
-                        FontAttributes="Bold" 
-                        BackgroundColor="Black"/>
-                        <Button Text="Explore" VerticalOptions="CenterAndExpand" BackgroundColor="#12e095"
-                                Clicked="GotoExplorePage"/>
-                    </VerticalStackLayout>
-                </Grid>
-            </Border>
-            <Border 
-                        Stroke="Transparent"
-                        StrokeThickness="5" 
-                        StrokeShape="RoundRectangle 45,100,45,45"
-                        Margin="10">
-                        <Border.Shadow>
-                               <Shadow Brush="#12e095" Radius="25" Offset="0,0"/>
-                        </Border.Shadow>
+        <Image Source="navbar.jpg" VerticalOptions="Start" Aspect="AspectFill" HeightRequest="90" Margin="0,-15,0,0"/>
+        
+        <ScrollView VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="650" Margin="0,70,0,0">
+            <VerticalStackLayout x:Name="places_portion" Spacing="25">
+                
+                <Border
+                    StrokeShape="RoundRectangle 25,25,25,25"
+                    HeightRequest="250" WidthRequest="350" HorizontalOptions="CenterAndExpand">
 
                     <Grid>
-                        <Image Source="panel_bg_2.jpg" Aspect="AspectFill" HorizontalOptions="Start" Opacity="0.95"/>
-                        <VerticalStackLayout Padding="25">
-                            <Border 
-                                    Scale="0.8" 
-                                    StrokeShape="RoundRectangle 50,150,150,50">
-                                <Border.Shadow>
-                                    <Shadow Brush="Black" Radius="15"/>
-                                </Border.Shadow>
-                                <StackLayout>
-                                    <Image Source="tram.jpg" VerticalOptions="Center"/>
-                                </StackLayout>
-                            </Border>
+                        <Image Source="howrah_bridge.jpg" Aspect="AspectFill" />
+
+                        <StackLayout VerticalOptions="End">
+                            <StackLayout.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#055AFF" Offset="0" />
+                                    <GradientStop Color="#A854FF" Offset="1" />
+                                </LinearGradientBrush>
+                            </StackLayout.Background>
+
                             <Label 
-                                Text="Select Route" 
-                                TextColor="White" 
-                                Padding="10"
-                                Margin="10" FontSize="Medium" 
+                                Margin="5,0,0,-10"
+                                Padding="5"
+                                Text="Howrah Bridge" 
+                                FontSize="Large" 
                                 FontAttributes="Bold" 
-                                BackgroundColor="Black"/>
-                            
-                                <Button Text="Travel" VerticalOptions="CenterAndExpand" BackgroundColor="#12e095"
-                                Clicked="GotoExplorePage"/>
-                        </VerticalStackLayout>
-                    </Grid>
-                </Border>
-            <Border 
-                    Stroke="Transparent"
-                    StrokeThickness="5" 
-                    StrokeShape="RoundRectangle 45,100,45,45"
-                    Margin="10">
-                    
-                    <Border.Shadow>
-                        <Shadow Brush="#12e095" Radius="25" Offset="0,0"/>
-                    </Border.Shadow>
-
-                    <Grid>
-                        <Image Source="panel_bg_3.jpg" Aspect="AspectFill" HorizontalOptions="Start" Opacity="0.95"/>
-                        <VerticalStackLayout Padding="25">
-                            <Border 
-                        Scale="0.8" 
-                        StrokeShape="RoundRectangle 50,150,150,50">
-                                <Border.Shadow>
-                                    <Shadow Brush="Black" Radius="15"/>
-                                </Border.Shadow>
-                                <StackLayout>
-                                    <Image Source="connect.jpg" VerticalOptions="Center"/>
-                                </StackLayout>
-                            </Border>
+                                FontFamily="Monospace"
+                                TextColor="GhostWhite"/>
                             <Label 
-                    Text="Connect with people" 
-                    TextColor="White" 
-                    Padding="10"
-                    Margin="10" FontSize="Medium" 
-                    FontAttributes="Bold" 
-                    BackgroundColor="Black"/>
+                                Margin="15,0,0,15"
+                                 Padding="5"  
+                                 Text="The Connection of Joy" 
+                                 FontSize="Medium" 
+                                 FontAttributes="Italic" 
+                                 FontFamily="Monospace"
+                                TextColor="AliceBlue"/>
+                        </StackLayout>
 
-                            <Button Text="Communicate" VerticalOptions="CenterAndExpand" BackgroundColor="#12e095"
-                    Clicked="GotoExplorePage"/>
-                        </VerticalStackLayout>
+                        <ImageButton
+                            HorizontalOptions="End"
+                            BackgroundColor="Black" WidthRequest="100"
+                            Source="go.png" Aspect="Center">
+
+                            <ImageButton.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#000000" Offset="1" />
+                                </LinearGradientBrush>
+                            </ImageButton.Background>
+                         
+                        </ImageButton>
+                        
                     </Grid>
+
                 </Border>
+
             </VerticalStackLayout>
         </ScrollView>
+
+        <HorizontalStackLayout VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="300" HeightRequest="70" Padding="10" Margin="0,40,20,0">
+            <Border StrokeShape="RoundRectangle 50,0,50,0" Stroke="Transparent">
+                <Entry x:Name="SearchEntry" Background="Black" Opacity="0.8" TextColor="WhiteSmoke" Placeholder="Search.." WidthRequest="250" HorizontalTextAlignment="Center">
+
+                </Entry>
+            </Border>
+            <Border Margin="-5,0,0,0" StrokeShape="RoundRectangle 0,50,0,50" Stroke="Transparent">
+                <ImageButton Aspect="Center" WidthRequest="50" Source="search.png" BackgroundColor="#2e0f57"/>
+            </Border>
+        </HorizontalStackLayout>
+
     </Grid>
+    
 
 </ContentPage>
