@@ -11,11 +11,19 @@ namespace MAUITestAPP
         {
             InitializeComponent();
 
-            places_portion.Add(CreatePlacePanel("Howrah" , "The Peneteration of Joy" , "howrah_bridge.jpg"));
-
+            places_portion.Add(CreatePlacePanel("Howrah Bridge" , "The Connection of Joy" , "howrah_bridge.jpg" , () => { GotoPlace("Howrah bridge , Howrah", "howrah_bridge_back.jpg"); }));
+            places_portion.Add(CreatePlacePanel("Birla Planetarium", "The Presentation of Joy", "birla.jpg" , () => { GotoPlace("Birla planetarium , Kolkata", "birla_back.jpg"); }));
+            places_portion.Add(CreatePlacePanel("Nataional Library", "The Double Penetration of Joy", "national_library.jpg", () => { GotoPlace("The National Library of India , Kolkata", "national_library_in.jpg"); }));
+            places_portion.Add(CreatePlacePanel("Prinsep Ghat", "The Joy On the Boat", "prinsep_ghat.jpg", () => { GotoPlace("James Prinsep Monument, Kolkata", "prinsep.jpg"); }));
         }
 
-        private Border CreatePlacePanel(string Name ,  string Desc , string ImgSrc)
+        private void GotoPlace(string name , string image_src)
+        {
+            var navigationParameter = new Dictionary<string, object> { { "place_name", name } , { "image_src" , image_src } };
+            Shell.Current.GoToAsync(nameof(ExplorePlacePage), navigationParameter);
+        }
+
+        private Border CreatePlacePanel(string Name, string Desc, string ImgSrc, Action go_to_page)
         {
             Border border = new();
 
@@ -57,10 +65,10 @@ namespace MAUITestAPP
             title.Text = Name;
           
             Thickness margin = new Thickness();
-            margin.Top = 5;
-            margin.Left = 0;
+            margin.Top = 0;
+            margin.Left = 5;
             margin.Right = 0;
-            margin.Bottom = -10;
+            margin.Bottom = -15;
             
             title.Margin = margin;
 
@@ -72,7 +80,7 @@ namespace MAUITestAPP
 
             title.Padding = padding;
 
-            title.FontSize = 18;
+            title.FontSize = 20;
             title.FontAttributes = FontAttributes.Bold;
             title.FontFamily = "Monospace";
             title.TextColor = Color.Parse("GhostWhite");
@@ -80,6 +88,20 @@ namespace MAUITestAPP
 
             Label desc = new();
             desc.Text = Desc;
+            desc.Padding = padding;
+
+            margin = new Thickness();
+            margin.Top = 0;
+            margin.Left = 15;
+            margin.Right = 0;
+            margin.Bottom = 15;
+
+            desc.Margin = margin;
+
+            desc.FontSize = 16;
+            desc.FontAttributes = FontAttributes.Italic;
+            desc.FontFamily = "Monospace";
+            desc.TextColor = Color.Parse("AliceBlue");
 
             layout.Add(title);
             layout.Add(desc);
@@ -108,6 +130,8 @@ namespace MAUITestAPP
 
             go_btn.Background = gradient;
 
+            go_btn.Clicked += delegate { go_to_page(); };
+
             grid.Add(layout);
             grid.Add(go_btn);
             border.Content = grid;
@@ -119,7 +143,6 @@ namespace MAUITestAPP
         {
             var navigationParameter = new Dictionary<string, object> { { "place_name", "howrah_bridge" } };
             await Shell.Current.GoToAsync(nameof(ExplorePlacePage), navigationParameter);
-            Console.WriteLine("COMPLETED");
         }
     }
 
