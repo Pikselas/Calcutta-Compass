@@ -1,5 +1,5 @@
 ﻿using Microsoft.Maui.Controls.Shapes;
-using System.Collections;
+using Microsoft.Maui.Controls;
 
 namespace MAUITestAPP
 {
@@ -12,8 +12,8 @@ namespace MAUITestAPP
             InitializeComponent();
 
             places_portion.Add(CreatePlacePanel("Howrah Bridge" , "The Connection of Joy" , "howrah_bridge.jpg" , () => { GotoPlace("Howrah bridge , Howrah", "howrah_bridge_back.jpg"); }));
-            places_portion.Add(CreatePlacePanel("Birla Planetarium", "The Presentation of Joy", "birla.jpg" , () => { GotoPlace("Birla planetarium , Kolkata", "birla_back.jpg"); }));
-            places_portion.Add(CreatePlacePanel("Nataional Library", "The Double Penetration of Joy", "national_library.jpg", () => { GotoPlace("The National Library of India , Kolkata", "national_library_in.jpg"); }));
+            places_portion.Add(CreatePlacePanel("Birla Planetarium", "Starlight Show", "birla.jpg" , () => { GotoPlace("Birla planetarium , Kolkata", "birla_back.jpg"); }));
+            places_portion.Add(CreatePlacePanel("Nataional Library", "The Stack of Joy", "national_library.jpg", () => { GotoPlace("The National Library of India , Kolkata", "national_library_in.jpg"); }));
             places_portion.Add(CreatePlacePanel("Prinsep Ghat", "The Joy On the Boat", "prinsep_ghat.jpg", () => { GotoPlace("James Prinsep Monument, Kolkata", "prinsep.jpg"); }));
         }
 
@@ -30,6 +30,13 @@ namespace MAUITestAPP
             var round_rect = new RoundRectangle();
             round_rect.CornerRadius = 25;
             border.StrokeShape = round_rect;
+            border.Stroke = Brush.Transparent;
+            
+            Shadow shadow = new Shadow();
+            shadow.Brush = Brush.Black;
+            shadow.Radius = 25;
+
+            border.Shadow = shadow;
 
             border.HeightRequest = 250;
             border.WidthRequest = 350;
@@ -137,12 +144,6 @@ namespace MAUITestAPP
             border.Content = grid;
 
             return border;
-        }
-
-        private async void GotoExplorePage(object sender, EventArgs e)
-        {
-            var navigationParameter = new Dictionary<string, object> { { "place_name", "howrah_bridge" } };
-            await Shell.Current.GoToAsync(nameof(ExplorePlacePage), navigationParameter);
         }
     }
 

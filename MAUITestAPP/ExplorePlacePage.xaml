@@ -4,56 +4,42 @@
              x:Class="MAUITestAPP.ExplorePlacePage"
              Title="ExplorePlacePage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#280240">
-    
-    <VerticalStackLayout IsClippedToBounds="True">
-        
-        <Border HorizontalOptions="FillAndExpand" HeightRequest="350">
+             BackgroundColor="#150c36">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 0,0,25,25">
             <Image x:Name="TopImage" Aspect="AspectFill"/>
         </Border>
-        
-        <Border    
-            HeightRequest="465" BackgroundColor="#150c36" Margin="0,-55,0,0" StrokeShape="RoundRectangle 35,35,0,0" Stroke="Transparent">
-            
+
+        <Border  Grid.Row="1"  
+            BackgroundColor="#150c36" Margin="0,0,0,0"
+            HorizontalOptions="FillAndExpand"
+            StrokeShape="RoundRectangle 35,35,0,0" Stroke="Transparent"
+            VerticalOptions="EndAndExpand">
+
             <Border.Shadow>
                 <Shadow Brush="Black"/>
             </Border.Shadow>
-            <Grid>
-
-                <ScrollView WidthRequest="350" HeightRequest="350" Margin="0,0,0,100" Orientation="Horizontal">
-                    <HorizontalStackLayout Padding="10">
-                        <Border 
-                            StrokeShape="RoundRectangle 35,35,35,35"  
-                            Stroke="Transparent" 
-                            WidthRequest="250" Margin="15"
-                            >
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="1.25,0" EndPoint="1,0.9">
-                                    <GradientStop Color="#150c36" Offset="0.6" />
-                                    <GradientStop Color="#02057d" Offset="1" />
-                                </LinearGradientBrush>
-                            </Border.Background>
-
-                            <Border Margin="15" Padding="10" Opacity="0.65" Stroke="Transparent"
-                                    BackgroundColor="Black"
-                                    StrokeShape="RoundRectangle 10,10,10,10">
-
-                                <VerticalStackLayout>
-                                    <Label Text="Title Item" FontAttributes="Bold" FontFamily="Monospace" TextColor="AliceBlue"/>
-                                    <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="DimGrey" />
-                                </VerticalStackLayout>
-                            </Border>
-                        </Border>
-
-                        <Border Stroke="Transparent" BackgroundColor="Black" WidthRequest="250" Margin="15">
-
-                        </Border>
+            
+            <Grid VerticalOptions="EndAndExpand">
+                
+                <ScrollView Grid.Row="0" VerticalOptions="FillAndExpand" Margin="0,0,0,100" Orientation="Horizontal">
+                    <HorizontalStackLayout Padding="10" VerticalOptions="FillAndExpand" x:Name="Descriptions" Spacing="25">
+                        
                     </HorizontalStackLayout>
 
                 </ScrollView>
                 
-                <Border HeightRequest="70"
-                Margin="10,10,10,20"
+                <Border Grid.Row="1" HeightRequest="70"
+                Margin="10,10,10,15"
                 StrokeShape="RoundRectangle 50,50,50,50"
                 BackgroundColor="#47bfff"
                 VerticalOptions="End"
@@ -82,5 +68,5 @@
             </Grid>
         </Border>
          
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

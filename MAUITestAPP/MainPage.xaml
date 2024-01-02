@@ -3,19 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUITestAPP.MainPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="Beige">
+             BackgroundColor="#030029">
 
     <Grid>
-        <Image Source="navbar.jpg" VerticalOptions="Start" Aspect="AspectFill" HeightRequest="90" Margin="0,-15,0,0"/>
-        
-        <ScrollView VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="650" Margin="0,70,0,0">
-            <VerticalStackLayout x:Name="places_portion" Spacing="25">
+        <Image Grid.Row="0" Source="navbar.jpg" VerticalOptions="Start" Aspect="AspectFill" HeightRequest="90"/>
+
+        <ScrollView Grid.Row="1" x:Name="view" VerticalOptions="FillAndExpand" Margin="0,90,0,0">
+            <VerticalStackLayout x:Name="places_portion" Spacing="15">
                 
-               
             </VerticalStackLayout>
         </ScrollView>
 
-        <HorizontalStackLayout VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="300" HeightRequest="70" Padding="10" Margin="0,40,20,0">
+        <HorizontalStackLayout VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="300" HeightRequest="70" Padding="10" Margin="0,10,20,0">
             <Border StrokeShape="RoundRectangle 50,0,50,0" Stroke="Transparent">
                 <Entry x:Name="SearchEntry" Background="Black" Opacity="0.8" TextColor="WhiteSmoke" Placeholder="Search.." WidthRequest="250" HorizontalTextAlignment="Center">
 
