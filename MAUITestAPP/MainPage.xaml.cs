@@ -1,28 +1,61 @@
 ﻿using Microsoft.Maui.Controls.Shapes;
-using Microsoft.Maui.Controls;
+using System.Text.Json;
 
 namespace MAUITestAPP
 {
 
     public partial class MainPage : ContentPage
     {
+        private class PlaceDataType
+        {
+            public string place_id { get; set; }
+            public string place_name { get; set; }
+            public string image_src { get; set; }
+            public string place_description { get; set; }
+            public string rating { get; set; }
+        }
 
         public MainPage()
         {
             InitializeComponent();
 
-            places_portion.Add(CreatePlacePanel("Howrah Bridge" , "The Connection of Joy" , "howrah_bridge.jpg" , () => { GotoPlace("Howrah bridge , Howrah", "howrah_bridge_back.jpg"); }));
-            places_portion.Add(CreatePlacePanel("Birla Planetarium", "Starlight Show", "birla.jpg" , () => { GotoPlace("Birla planetarium , Kolkata", "birla_back.jpg"); }));
+            /*places_portion.Add(CreatePlacePanel("Howrah Bridge", "The Connection of Joy", "howrah_bridge.jpg", () => { GotoPlace("Howrah bridge , Howrah", "howrah_bridge_back.jpg"); }));
+            places_portion.Add(CreatePlacePanel("Birla Planetarium", "Starlight Show", "birla.jpg", () => { GotoPlace("Birla planetarium , Kolkata", "birla_back.jpg"); }));
             places_portion.Add(CreatePlacePanel("Nataional Library", "The Stack of Joy", "national_library.jpg", () => { GotoPlace("The National Library of India , Kolkata", "national_library_in.jpg"); }));
             places_portion.Add(CreatePlacePanel("Prinsep Ghat", "The Joy On the Boat", "prinsep_ghat.jpg", () => { GotoPlace("James Prinsep Monument, Kolkata", "prinsep.jpg"); }));
+            */
+            //populateWithPlaces("");
+
+            Shell.Current.GoToAsync(nameof(EntryPage));
         }
 
-        private void GotoPlace(string name , string image_src)
+        private void GotoPlace(string place_id)
         {
-            var navigationParameter = new Dictionary<string, object> { { "place_name", name } , { "image_src" , image_src } };
+            var navigationParameter = new Dictionary<string, object> { { "place_id", place_id } };
             Shell.Current.GoToAsync(nameof(ExplorePlacePage), navigationParameter);
         }
 
+        private async void populateWithPlaces(string place_term)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("https://musical-goldfish-75444r96g7qhrrwg-3000.app.github.dev/");
+            if (response.IsSuccessStatusCode)
+            {
+                var res_content = await response.Content.ReadAsStringAsync();
+                var place_data = JsonSerializer.Deserialize<List<PlaceDataType>>(res_content);
+
+                if (place_data != null)
+                {
+                    foreach (PlaceDataType place in place_data)
+                    {
+                        places_portion.Add(CreatePlacePanel(place.place_name , "" , place.image_src , () => 
+                        {
+                            GotoPlace(place.place_id);
+                        }));
+                    }
+                }
+            }
+        }
         private Border CreatePlacePanel(string Name, string Desc, string ImgSrc, Action go_to_page)
         {
             Border border = new();
@@ -31,7 +64,7 @@ namespace MAUITestAPP
             round_rect.CornerRadius = 25;
             border.StrokeShape = round_rect;
             border.Stroke = Brush.Transparent;
-            
+
             Shadow shadow = new Shadow();
             shadow.Brush = Brush.Black;
             shadow.Radius = 25;
@@ -44,7 +77,7 @@ namespace MAUITestAPP
 
             Grid grid = new();
 
-            Image image = new(){ Source = ImgSrc };
+            Image image = new() { Source = ImgSrc };
             image.Aspect = Aspect.AspectFill;
             grid.Add(image);
 
@@ -70,13 +103,13 @@ namespace MAUITestAPP
 
             Label title = new();
             title.Text = Name;
-          
+
             Thickness margin = new Thickness();
             margin.Top = 0;
             margin.Left = 5;
             margin.Right = 0;
             margin.Bottom = -15;
-            
+
             title.Margin = margin;
 
             Thickness padding = new Thickness();
@@ -123,8 +156,8 @@ namespace MAUITestAPP
             stop1 = new GradientStop();
             stop2 = new GradientStop();
 
-            stop1.Color = Color.FromRgba(0,0,0,0);
-            stop2.Color = Color.FromRgba(0,0,0,255);
+            stop1.Color = Color.FromRgba(0, 0, 0, 0);
+            stop2.Color = Color.FromRgba(0, 0, 0, 255);
 
             stop1.Offset = 0;
             stop2.Offset = 1;
@@ -146,5 +179,4 @@ namespace MAUITestAPP
             return border;
         }
     }
-
 }

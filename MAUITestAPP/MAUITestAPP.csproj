@@ -54,7 +54,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#0e0359" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash_screen.jpg" Aspect="AspectFill"/>
+		<MauiSplashScreen Include="Resources\Splash\splash_screen.jpg" Aspect="AspectFill" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -81,6 +81,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="EntryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="ExplorePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

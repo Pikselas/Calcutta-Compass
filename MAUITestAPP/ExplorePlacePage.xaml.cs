@@ -1,5 +1,4 @@
 using Microsoft.Maui.Controls.Shapes;
-using System.Xml.Linq;
 
 namespace MAUITestAPP;
 
@@ -7,6 +6,9 @@ public partial class ExplorePlacePage : ContentPage , IQueryAttributable
 {
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
+
+
+
         TopImage.Source = $"{query["image_src"]}";
         GoBtn.Clicked += delegate
         {
@@ -100,6 +102,4 @@ public partial class ExplorePlacePage : ContentPage , IQueryAttributable
 	{
 		InitializeComponent();
 	}
-
-
 }
