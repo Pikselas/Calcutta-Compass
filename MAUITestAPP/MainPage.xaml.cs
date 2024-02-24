@@ -25,8 +25,6 @@ namespace MAUITestAPP
             places_portion.Add(CreatePlacePanel("Prinsep Ghat", "The Joy On the Boat", "prinsep_ghat.jpg", () => { GotoPlace("James Prinsep Monument, Kolkata", "prinsep.jpg"); }));
             */
             //populateWithPlaces("");
-
-            Shell.Current.GoToAsync(nameof(EntryPage));
         }
 
         private void GotoPlace(string place_id)

@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MAUITestAPP.EntryPage"
              Title="EntryPage"
              Shell.NavBarIsVisible="False">
-    <Grid>
+    <Grid >
         <Image Grid.Row="0" Source="entry_image.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
+
+        <VerticalStackLayout TranslationY="25" Padding="5" Spacing="20">
+
+            <VerticalStackLayout Spacing="-30">
+                <Label Text="discover" FontSize="45" TextColor="#000066" Margin="25,0,0,0"/>
+                <Label Text="Kolkata" FontFamily="BellFast" FontSize="85" FontAttributes="Bold" TextColor="AliceBlue" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+                <Label Text="the city of joy!" Margin="-25,0,0,0" FontAttributes="Italic" FontSize="22" TextColor="#000014" Padding="5" HorizontalOptions="EndAndExpand"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout 
+                Padding="50,0,50,0"
+                HorizontalOptions="CenterAndExpand">
+                <Label
+                       Padding="15"
+                        Opacity="0.7"
+                       BackgroundColor="AliceBlue"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="#070033" 
+                       FontSize="25"
+                       FontAttributes="Bold"
+                       TextDecorations="Underline"
+                       FontFamily="BellFast"    
+                    
+                    Text="The city of joy and sorrow, of art and chaos, of history and modernity.
+                          
+                          A city that embraces its contradictions and celebrates its diversity.
+                          A city that never sleeps, never stops, never surrenders.
+                          A city that is more than a place, it is a feeling.
+                          A feeling that stays with you forever." />
+
+                <Label
+                    HorizontalOptions="EndAndExpand"
+                    FontAttributes="Italic"
+                    TextColor="#101329"
+                    FontSize="20"
+                    Text="--Yokohama bomber"/>
+
+            </VerticalStackLayout>
+
+            <ImageButton Source="exp2.png" Clicked="gotoMainPage">
+                <ImageButton.Shadow>
+                    <Shadow Brush="Black" Radius="75"/>
+                </ImageButton.Shadow>
+            </ImageButton>
+
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>

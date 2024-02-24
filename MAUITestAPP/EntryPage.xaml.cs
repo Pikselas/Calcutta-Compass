@@ -7,5 +7,8 @@ public partial class EntryPage : ContentPage
 		InitializeComponent();
 	}
 
-	
+	private void gotoMainPage(object sender , EventArgs e)
+	{
+		Shell.Current.GoToAsync(nameof(MainPage));
+	}
 }
