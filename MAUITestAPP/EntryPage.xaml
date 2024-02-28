@@ -21,7 +21,7 @@
                 HorizontalOptions="CenterAndExpand">
                 <Label
                        Padding="15"
-                        Opacity="0.7"
+                       Opacity="0.7"
                        BackgroundColor="AliceBlue"
                        HorizontalOptions="CenterAndExpand"
                        TextColor="#070033" 

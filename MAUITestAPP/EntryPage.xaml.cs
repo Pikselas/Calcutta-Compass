@@ -5,7 +5,10 @@ public partial class EntryPage : ContentPage
 	public EntryPage()
 	{
 		InitializeComponent();
-	}
+
+        Shell.Current.GoToAsync(nameof(ExplorePlacePage));
+
+    }
 
 	private void gotoMainPage(object sender , EventArgs e)
 	{

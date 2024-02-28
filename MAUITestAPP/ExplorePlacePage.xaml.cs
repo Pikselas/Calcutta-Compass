@@ -9,11 +9,11 @@ public partial class ExplorePlacePage : ContentPage , IQueryAttributable
 
 
 
-        TopImage.Source = $"{query["image_src"]}";
-        GoBtn.Clicked += delegate
+        //TopImage.Source = $"{query["image_src"]}";
+       /* GoBtn.Clicked += delegate
         {
             Shell.Current.GoToAsync(nameof(ExplorePage), new Dictionary<string, object> { { "place", $"{query["place_name"]}" } });
-        };
+        };*/
 
         VerticalStackLayout content = new VerticalStackLayout();
         content.BackgroundColor = Colors.Black;
@@ -47,8 +47,8 @@ public partial class ExplorePlacePage : ContentPage , IQueryAttributable
         img.Source = "howrah_bridge.jpg";
         img.Aspect = Aspect.AspectFill;
 
-        Descriptions.Add(CreatePanel(Color.FromHex("#7e04cf") , content));
-        Descriptions.Add(CreatePanel(Color.FromHex("#6be8cf") , img));
+       // Descriptions.Add(CreatePanel(Color.FromHex("#7e04cf") , content));
+        //Descriptions.Add(CreatePanel(Color.FromHex("#6be8cf") , img));
 
     }
 

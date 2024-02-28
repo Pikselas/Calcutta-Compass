@@ -24,13 +24,16 @@ namespace MAUITestAPP
             places_portion.Add(CreatePlacePanel("Nataional Library", "The Stack of Joy", "national_library.jpg", () => { GotoPlace("The National Library of India , Kolkata", "national_library_in.jpg"); }));
             places_portion.Add(CreatePlacePanel("Prinsep Ghat", "The Joy On the Boat", "prinsep_ghat.jpg", () => { GotoPlace("James Prinsep Monument, Kolkata", "prinsep.jpg"); }));
             */
-            //populateWithPlaces("");
+            populateWithPlaces("");
+
+            //places_portion.Add(pain("Kolk", 3.2f, "birla.jpg", () => { }));
         }
 
         private void GotoPlace(string place_id)
         {
             var navigationParameter = new Dictionary<string, object> { { "place_id", place_id } };
             Shell.Current.GoToAsync(nameof(ExplorePlacePage), navigationParameter);
+            Console.WriteLine("CLICKED");
         }
 
         private async void populateWithPlaces(string place_term)
@@ -46,7 +49,7 @@ namespace MAUITestAPP
                 {
                     foreach (PlaceDataType place in place_data)
                     {
-                        places_portion.Add(CreatePlacePanel(place.place_name , "" , place.image_src , () => 
+                        places_portion.Add(pain(place.place_name , 4.5f , place.image_src , () => 
                         {
                             GotoPlace(place.place_id);
                         }));
@@ -173,6 +176,139 @@ namespace MAUITestAPP
             grid.Add(layout);
             grid.Add(go_btn);
             border.Content = grid;
+
+            return border;
+        }
+    
+        private IView pain(string Name , float Rating , string ImgSrc , Action clicked)
+        {
+            // main frame
+            // using grid as it helps for overlaying
+            Grid grid = new Grid();
+            grid.HeightRequest = 150;
+
+            // background design
+            var bg_layout = new HorizontalStackLayout();
+            bg_layout.HeightRequest = 150;
+            bg_layout.BackgroundColor = Color.FromHex("#040624");
+
+            // stroke shape full circle
+            var border_stroke_shape = new RoundRectangle();
+            border_stroke_shape.CornerRadius = 150;
+
+            // 1st circle
+            var circle_1 = new Border();
+            circle_1.Stroke = Brush.Transparent;
+            circle_1.WidthRequest = 280;
+            circle_1.HeightRequest = 280;
+            circle_1.StrokeShape = border_stroke_shape;
+            circle_1.BackgroundColor = Color.FromHex("#22bf73");
+
+            var circle_1_margin = new Thickness();
+            circle_1_margin.Left = 50;
+            circle_1_margin.Top = 225;
+            
+            circle_1.Margin = circle_1_margin;
+
+            // 2nd circle
+            var circle_2 = new Border();
+            circle_2.Stroke = Brush.Transparent;
+            circle_2.WidthRequest = 200;
+            circle_2.HeightRequest = 200;
+            circle_2.StrokeShape = border_stroke_shape;
+            circle_2.BackgroundColor = Color.FromHex("#22bf73");
+
+            var circle_2_margin = new Thickness();
+            circle_2_margin.Left = -45;
+            circle_2_margin.Top = 60;
+
+            circle_2.Margin = circle_2_margin;
+
+            bg_layout.Add(circle_1);
+            bg_layout.Add(circle_2);
+
+            // Content
+            var content_layout = new HorizontalStackLayout();
+
+            // place image
+            var image_border = new Border();
+            image_border.HeightRequest = 140;
+            image_border.WidthRequest = 180;
+            image_border.Stroke = Brush.Transparent;
+
+            var image_border_stroke_shape = new RoundRectangle();
+            image_border_stroke_shape.CornerRadius = new CornerRadius(0 ,45, 0, 45);
+
+            image_border.StrokeShape = image_border_stroke_shape;
+
+            var image = new Image();
+            image.Source = ImgSrc;
+            image.Aspect = Aspect.AspectFill;
+
+            image_border.Content = image;
+            content_layout.Add(image_border);
+
+            // place details
+            var details_layout = new VerticalStackLayout();
+
+            var title = new Label();
+            title.Text = Name;
+            title.TextColor = Color.FromHex("#adf0ff");
+            title.FontFamily = "Bellfast";
+            title.FontSize = 30;
+            title.FontAttributes = FontAttributes.Bold;
+
+            var rating_border = new Border();
+            rating_border.HorizontalOptions = LayoutOptions.Start;
+            rating_border.WidthRequest = 70;
+            rating_border.Padding = 5;
+
+            var rating_border_stroke = new RoundRectangle();
+            rating_border_stroke.CornerRadius = 15;
+
+            rating_border.StrokeShape = rating_border_stroke;
+
+            var rating_layout = new HorizontalStackLayout();
+
+            var rating = new Label();
+            rating.Text = Rating.ToString();
+            rating.TextColor = Color.Parse("AliceBlue");
+            rating.FontSize = 20;
+
+            rating_layout.Add(new Image { Source = "star.png" });
+            rating_layout.Add(rating);
+
+            rating_border.Content = rating_layout;
+
+            var go_btn = new ImageButton { Source = "goto_explore.png" };
+            go_btn.Clicked += delegate { clicked(); };
+
+            var go_btn_margin = new Thickness();
+            go_btn_margin.Left = 140;
+            go_btn_margin.Top = 0;
+
+            go_btn.Margin = go_btn_margin;
+
+            var btn_shadow = new Shadow();
+            btn_shadow.Brush = Brush.AliceBlue;
+            btn_shadow.Radius = 10;
+
+            go_btn.Shadow = btn_shadow;
+
+            details_layout.Add(title);
+            details_layout.Add(rating_border);
+            details_layout.Add(go_btn);
+
+            content_layout.Add(details_layout);
+
+            grid.Add(bg_layout);
+            grid.Add(content_layout);
+
+            var border = new Border();
+            border.HeightRequest = 150;
+            border.Content = grid;
+            border.Stroke = Brush.Transparent;
+            border.StrokeThickness = 0;
 
             return border;
         }
