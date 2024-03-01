@@ -10,6 +10,7 @@
 
         <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,90,0,0">
             <VerticalStackLayout x:Name="places_portion" Padding="15">
+                
                 <Border Stroke="Transparent" StrokeShape="RoundRectangle 45,45,45,45">
                     <Grid HeightRequest="350">
                         <Image Source="birla.jpg" Aspect="AspectFill"/>
