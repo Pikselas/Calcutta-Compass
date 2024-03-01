@@ -12,19 +12,21 @@ namespace MAUITestAPP
             public string place_name { get; set; }
             public string image_src { get; set; }
             public string place_description { get; set; }
-            public string rating { get; set; }
+            public float rating { get; set; }
         }
 
         public MainPage()
         {
             InitializeComponent();
-            places_portion.Add(GetPanel("Birla Planetarium", "Maidan", "", "birla.jpg", () => { }));
-            /*places_portion.Add(CreatePlacePanel("Howrah Bridge", "The Connection of Joy", "howrah_bridge.jpg", () => { GotoPlace("Howrah bridge , Howrah", "howrah_bridge_back.jpg"); }));
-            places_portion.Add(CreatePlacePanel("Birla Planetarium", "Starlight Show", "birla.jpg", () => { GotoPlace("Birla planetarium , Kolkata", "birla_back.jpg"); }));
-            places_portion.Add(CreatePlacePanel("Nataional Library", "The Stack of Joy", "national_library.jpg", () => { GotoPlace("The National Library of India , Kolkata", "national_library_in.jpg"); }));
-            places_portion.Add(CreatePlacePanel("Prinsep Ghat", "The Joy On the Boat", "prinsep_ghat.jpg", () => { GotoPlace("James Prinsep Monument, Kolkata", "prinsep.jpg"); }));
-            */
-            populateWithPlaces("");
+           // places_portion.Add(GetPanel("Birla Planetarium", "Maidan", "", "birla.jpg", () => { }));
+            populateWithPlaces(null);
+
+            search_btn.Clicked += delegate 
+            {
+                Console.WriteLine("\n\nHELLO\n");
+                Console.WriteLine(entry_field.Text);
+                populateWithPlaces(entry_field.Text);
+            };
 
             //places_portion.Add(pain("Kolk", 3.2f, "birla.jpg", () => { }));
         }
@@ -33,15 +35,20 @@ namespace MAUITestAPP
         {
             var navigationParameter = new Dictionary<string, object> { { "place_id", place_id } };
             Shell.Current.GoToAsync(nameof(ExplorePlacePage), navigationParameter);
-            Console.WriteLine("CLICKED");
         }
 
-        private async void populateWithPlaces(string place_term)
+        private async void populateWithPlaces(string? place_term)
         {
+
+            var URL = "https://musical-goldfish-75444r96g7qhrrwg-3000.app.github.dev" + (place_term != null? "/search/" + place_term : null);
+
+            Console.WriteLine(URL);
+
             var client = new HttpClient();
-            var response = await client.GetAsync("https://musical-goldfish-75444r96g7qhrrwg-3000.app.github.dev/");
+            var response = await client.GetAsync(URL);
             if (response.IsSuccessStatusCode)
             {
+                places_portion.Clear();
                 var res_content = await response.Content.ReadAsStringAsync();
                 var place_data = JsonSerializer.Deserialize<List<PlaceDataType>>(res_content);
 
@@ -49,10 +56,7 @@ namespace MAUITestAPP
                 {
                     foreach (PlaceDataType place in place_data)
                     {
-                        places_portion.Add(pain(place.place_name, 4.5f, place.image_src, () =>
-                        {
-                            GotoPlace(place.place_id);
-                        }));
+                        places_portion.Add(GetPanel(place));
                     }
                 }
             }
@@ -313,9 +317,7 @@ namespace MAUITestAPP
             return border;
         }
 
-
-
-        private IView GetPanel(string Name, string Location, string Rating, string ImgSrc, Action clicked)
+        private IView GetPanel(PlaceDataType data)
         {
             var border = new Border();
             border.Stroke = Brush.Transparent;
@@ -328,7 +330,7 @@ namespace MAUITestAPP
             var grid = new Grid();
             grid.HeightRequest = 350;
             var img = new Image();
-            img.Source = ImgSrc;
+            img.Source = data.image_src;
             img.Aspect = Aspect.AspectFill;
             grid.Add(img);
             grid.Add(layout);
@@ -350,7 +352,7 @@ namespace MAUITestAPP
             img2.Source = "star.png";
             layout2.Add(img2);
             var label = new Label();
-            label.Text = "4.5";
+            label.Text = data.rating.ToString();
             label.FontSize = 20;
             layout2.Add(label);
             var imgbtn = new ImageButton();
@@ -365,7 +367,7 @@ namespace MAUITestAPP
             var layout3 = new VerticalStackLayout();
             layout3.Padding = 10;
             var label2 = new Label();
-            label2.Text = Name;
+            label2.Text = data.place_name;
             label2.TextColor = Color.Parse("WhiteSmoke");
             label2.VerticalOptions = LayoutOptions.Center;
             label2.FontSize = 30;
@@ -378,7 +380,7 @@ namespace MAUITestAPP
             var loc_image = new Image { Source = "location_blue.png" };
 
             var label3 = new Label();
-            label3.Text = Location;
+            label3.Text = "The Macher Baazar";
             label3.TextColor = Color.Parse("Azure");
             label3.VerticalOptions = LayoutOptions.Center;
 
@@ -390,6 +392,10 @@ namespace MAUITestAPP
             imgbtn1.Source = "goto_explore.png";
             imgbtn1.HorizontalOptions = LayoutOptions.End;
             imgbtn1.VerticalOptions = LayoutOptions.End;
+            imgbtn1.Clicked += delegate
+            {
+                GotoPlace(data.place_id);
+            };
         
             grid.Add(imgbtn1);
             grid.Add(layout3);

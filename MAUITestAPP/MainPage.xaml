@@ -9,40 +9,7 @@
         <Image Grid.Row="0" Source="navbar.jpg" VerticalOptions="Start" Aspect="AspectFill" HeightRequest="90"/>
 
         <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,90,0,0">
-            <VerticalStackLayout x:Name="places_portion" Padding="15">
-                
-                <Border Stroke="Transparent" StrokeShape="RoundRectangle 45,45,45,45">
-                    <Grid HeightRequest="350">
-                        <Image Source="birla.jpg" Aspect="AspectFill"/>
-
-                        <StackLayout Padding="10">
-
-                            <Grid>
-                                <Border
-                                    BackgroundColor="AntiqueWhite"
-                                    HorizontalOptions="Start" StrokeShape="RoundRectangle 25,25,25,25" WidthRequest="70" HeightRequest="40">
-                                    <HorizontalStackLayout Padding="5">
-                                        <Image Source="star.png"/>
-                                        <Label Text="4.5" FontSize="20"/>
-                                    </HorizontalStackLayout>
-                                </Border>
-                                <ImageButton Source="favourite_unselected.png" HorizontalOptions="End"/>
-                            </Grid>
-                            
-                            <Grid VerticalOptions="EndAndExpand">
-                                <VerticalStackLayout Padding="10">
-                                    <Label Text="The Birla" TextColor="WhiteSmoke" VerticalOptions="Center" FontSize="35"/>
-                                    <Label Text="Unknown Location" TextColor="Wheat"/>
-                                </VerticalStackLayout>
-
-                                <ImageButton Source="goto_explore.png" HorizontalOptions="End"/>
-
-                            </Grid>
-
-                        </StackLayout>
-                        
-                    </Grid>
-                </Border>
+            <VerticalStackLayout x:Name="places_portion" Padding="15" Spacing="10">
                 
             </VerticalStackLayout>
         </ScrollView>
@@ -54,7 +21,7 @@
             </Entry>
            </Border>
         <Border Margin="-5,0,0,0" StrokeShape="RoundRectangle 0,50,0,50" Stroke="Transparent">
-          <ImageButton Aspect="Center" WidthRequest="50" Source="search.png" BackgroundColor="#d4fff2"/>
+          <ImageButton x:Name="search_btn" Aspect="Center" WidthRequest="50" Source="search.png" BackgroundColor="#d4fff2"/>
         </Border>
        </HorizontalStackLayout>
     </Grid>
