@@ -371,19 +371,26 @@ namespace MAUITestAPP
             label2.FontSize = 30;
             label2.WidthRequest = 150;
             label2.HorizontalOptions = LayoutOptions.Start;
+            layout3.Add(label2);
+
+            var layout4 = new HorizontalStackLayout();
+
+            var loc_image = new Image { Source = "location_blue.png" };
+
             var label3 = new Label();
             label3.Text = Location;
             label3.TextColor = Color.Parse("Azure");
-            layout3.Add(label2);
-            layout3.Add(label3);
-            var imgbtn3 = new ImageButton();
-            imgbtn3.Source = "location.png";
-            imgbtn3.HorizontalOptions = LayoutOptions.Start;
+            label3.VerticalOptions = LayoutOptions.Center;
+
+            layout4.Add(loc_image);
+            layout4.Add(label3);
+            layout3.Add(layout4);
+
             var imgbtn1 = new ImageButton();
             imgbtn1.Source = "goto_explore.png";
             imgbtn1.HorizontalOptions = LayoutOptions.End;
             imgbtn1.VerticalOptions = LayoutOptions.End;
-            grid.Add(imgbtn3);
+        
             grid.Add(imgbtn1);
             grid.Add(layout3);
             layout.Add(grid);
