@@ -6,7 +6,8 @@ public partial class EntryPage : ContentPage
 	{
 		InitializeComponent();
 
-        Shell.Current.GoToAsync(nameof(ExplorePlacePage));
+        Shell.Current.GoToAsync(nameof(MainPage));
+
 
     }
 
