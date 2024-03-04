@@ -11,56 +11,43 @@ namespace MAUITestAPP
             public string place_id { get; set; }
             public string place_name { get; set; }
             public string image_src { get; set; }
-            public string place_description { get; set; }
+            public string location { get; set; }
             public float rating { get; set; }
         }
 
         public MainPage()
         {
             InitializeComponent();
-           // places_portion.Add(GetPanel("Birla Planetarium", "Maidan", "", "birla.jpg", () => { }));
-            populateWithPlaces(null);
+
+            var places = PlaceRequestHandler.GetPlaceList();
+            if (places != null)
+            {
+                Console.WriteLine(places.Count);
+                foreach (var place in places)
+                {
+                    places_portion.Add(GetPanel(place));
+                }
+            }
 
             search_btn.Clicked += delegate 
             {
-                Console.WriteLine("\n\nHELLO\n");
-                Console.WriteLine(entry_field.Text);
-                populateWithPlaces(entry_field.Text);
+                var places = PlaceRequestHandler.SearchPlace(entry_field.Text);
+                if (places != null)
+                {
+                    places_portion.Clear();
+                    foreach (var place in places)
+                    {
+                        places_portion.Add(GetPanel(place));
+                    }
+                }
             };
-
-            //places_portion.Add(pain("Kolk", 3.2f, "birla.jpg", () => { }));
         }
-
         private void GotoPlace(string place_id)
         {
             var navigationParameter = new Dictionary<string, object> { { "place_id", place_id } };
             Shell.Current.GoToAsync(nameof(ExplorePlacePage), navigationParameter);
         }
 
-        private async void populateWithPlaces(string? place_term)
-        {
-
-            var URL = "https://musical-goldfish-75444r96g7qhrrwg-3000.app.github.dev" + (place_term != null? "/search/" + place_term : null);
-
-            Console.WriteLine(URL);
-
-            var client = new HttpClient();
-            var response = await client.GetAsync(URL);
-            if (response.IsSuccessStatusCode)
-            {
-                places_portion.Clear();
-                var res_content = await response.Content.ReadAsStringAsync();
-                var place_data = JsonSerializer.Deserialize<List<PlaceDataType>>(res_content);
-
-                if (place_data != null)
-                {
-                    foreach (PlaceDataType place in place_data)
-                    {
-                        places_portion.Add(GetPanel(place));
-                    }
-                }
-            }
-        }
         private Border CreatePlacePanel(string Name, string Desc, string ImgSrc, Action go_to_page)
         {
             Border border = new();
@@ -317,7 +304,7 @@ namespace MAUITestAPP
             return border;
         }
 
-        private IView GetPanel(PlaceDataType data)
+        private IView GetPanel(PlaceRequestHandler.PlaceDataType data)
         {
             var border = new Border();
             border.Stroke = Brush.Transparent;
@@ -380,7 +367,7 @@ namespace MAUITestAPP
             var loc_image = new Image { Source = "location_blue.png" };
 
             var label3 = new Label();
-            label3.Text = "The Macher Baazar";
+            label3.Text = data.location;
             label3.TextColor = Color.Parse("Azure");
             label3.VerticalOptions = LayoutOptions.Center;
 
@@ -402,6 +389,11 @@ namespace MAUITestAPP
             layout.Add(grid);
 
             return border;
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.FlyoutIsPresented = true;
         }
     }
 }

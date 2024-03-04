@@ -15,14 +15,15 @@
         </ScrollView>
 
         <HorizontalStackLayout VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="80" Padding="15">
-           <Border StrokeShape="RoundRectangle 50,0,50,0" Stroke="Transparent">
-            <Entry x:Name="entry_field" Background="Black" Opacity="0.7" HorizontalTextAlignment="Center" WidthRequest="225" TextColor="WhiteSmoke" Placeholder="Search...">
+            <Border StrokeShape="RoundRectangle 50,0,50,0" Stroke="Transparent">
+                <Entry x:Name="entry_field" Background="Black" Opacity="0.7" HorizontalTextAlignment="Center" WidthRequest="225" TextColor="WhiteSmoke" Placeholder="Search...">
 
-            </Entry>
-           </Border>
-        <Border Margin="-5,0,0,0" StrokeShape="RoundRectangle 0,50,0,50" Stroke="Transparent">
-          <ImageButton x:Name="search_btn" Aspect="Center" WidthRequest="50" Source="search.png" BackgroundColor="#d4fff2"/>
-        </Border>
-       </HorizontalStackLayout>
+                </Entry>
+            </Border>
+            <Border Margin="-5,0,0,0" StrokeShape="RoundRectangle 0,50,0,50" Stroke="Transparent">
+                <ImageButton x:Name="search_btn" Aspect="Center" WidthRequest="50" Source="search.png" BackgroundColor="#d4fff2"/>
+            </Border>
+            <ImageButton Source="go.png" HorizontalOptions="End" Clicked="ImageButton_Clicked"/>
+        </HorizontalStackLayout>
     </Grid>
 </ContentPage>
