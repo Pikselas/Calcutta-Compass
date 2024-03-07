@@ -1,5 +1,7 @@
-﻿using Microsoft.Maui.Controls.Shapes;
-using System.Text.Json;
+﻿using CommunityToolkit.Maui.Media;
+using CommunityToolkit.Maui.Alerts;
+using Microsoft.Maui.Controls.Shapes;
+using System.Globalization;
 
 namespace MAUITestAPP
 {
@@ -391,9 +393,31 @@ namespace MAUITestAPP
             return border;
         }
 
-        private void ImageButton_Clicked(object sender, EventArgs e)
+        private async void ImageButton_Clicked(object sender, EventArgs e)
         {
-            Shell.Current.FlyoutIsPresented = true;
+            CancellationTokenSource source = new CancellationTokenSource();
+            CancellationToken token = source.Token;
+            var isGranted = await SpeechToText.Default.RequestPermissions(token);
+            if (!isGranted)
+            {
+                await Toast.Make("Permission not granted").Show(CancellationToken.None);
+                return;
+            }
+            string txt = "";
+            var recognitionResult = await SpeechToText.Default.ListenAsync(
+                                                CultureInfo.GetCultureInfo("uk-ua"),
+                                                new Progress<string>((partialText) =>
+                                               {
+                                                   txt += partialText + " ";
+                                               }), token);
+            if (recognitionResult.IsSuccessful)
+            {
+                txt = recognitionResult.Text;
+            }
+            else
+            {
+                await Toast.Make(recognitionResult.Exception?.Message ?? "Unable to recognize speech").Show(CancellationToken.None);
+            }
         }
     }
 }
