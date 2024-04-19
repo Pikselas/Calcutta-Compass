@@ -5,7 +5,7 @@
              x:Class="MAUITestAPP.EntryPage"
              Title="EntryPage"
              Shell.NavBarIsVisible="False">
-    <Grid >
+    <!--<Grid >
         <Image Grid.Row="0" Source="entry_image.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
 
         <VerticalStackLayout TranslationY="25" Padding="5" Spacing="20">
@@ -42,7 +42,7 @@
                     FontAttributes="Italic"
                     TextColor="#101329"
                     FontSize="20"
-                    Text="--Yokohama bomber"/>
+                    Text="-Yokohama bomber"/>
 
             </VerticalStackLayout>
 
@@ -53,5 +53,55 @@
             </ImageButton>
 
         </VerticalStackLayout>
-    </Grid>
+    </Grid> 
+-->
+
+
+    <VerticalStackLayout>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="10,10">
+
+                <Border StrokeShape="RoundRectangle 25" HeightRequest="200" BackgroundColor="#e1ebfa" Stroke="Transparent">
+                    
+                    <HorizontalStackLayout Padding="10" Spacing="5">
+                        
+                        <Border WidthRequest="150" StrokeShape="RoundRectangle 20" Stroke="Transparent">
+                            <Image Source="birla.jpg" Aspect="AspectFill"/>
+                        </Border>
+                        
+                        <VerticalStackLayout Padding="10">
+                            
+                            <Label FontSize="22" WidthRequest="180" FontFamily="Monospace" Text="Hello World!! rhegjegher" LineBreakMode= "TailTruncation"/>
+                            
+                            <HorizontalStackLayout>
+                                <Image Source="location.png"/>
+                                <Label Text="Backalley" FontSize="15" FontFamily="Monospace" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                            
+                            <ScrollView Margin="5" WidthRequest="150" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                <HorizontalStackLayout Spacing="5">
+                                    <Border Stroke="Transparent" StrokeShape="RoundRectangle 15" WidthRequest="100" HeightRequest="70">
+                                        <Image Source="birla.jpg" Aspect="AspectFill"/>
+                                    </Border>
+                                    <Border Stroke="Transparent" StrokeShape="RoundRectangle 15" WidthRequest="100" HeightRequest="70">
+                                        <Image Source="birla.jpg" Aspect="AspectFill"/>
+                                    </Border>
+                                </HorizontalStackLayout>
+                            </ScrollView>
+                            
+                            <Border Stroke="Transparent" HeightRequest="25" StrokeShape="RoundRectangle 25" BackgroundColor="#2b282e">
+                                <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AliceBlue" Text="science-exibition"/>
+                            </Border>
+                        
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </VerticalStackLayout>
+
+
 </ContentPage>

@@ -20,6 +20,8 @@ namespace MAUITestAPP
             public float? rating { get; set; }
             public string? description { get; set; }
             public string? location { get; set; }
+            public float? lat { get; set; }
+            public float? lon { get; set; }
         }
         public class PlaceImageType
         {

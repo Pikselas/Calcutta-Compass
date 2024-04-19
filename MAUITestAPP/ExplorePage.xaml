@@ -4,8 +4,9 @@
              x:Class="MAUITestAPP.ExplorePage"
              Title="ExplorePage"
              Shell.NavBarIsVisible="False">
-    
+
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <WebView x:Name="myWebView" Source="www/viewmap.html" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+        <Button Text="OPEN MAP" VerticalOptions="Start" Clicked="OpenInMap" HeightRequest="40"/>
+        <WebView Margin="0,50,0,0" x:Name="myWebView" Source="www/viewmap.html" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
     </Grid>
 </ContentPage>

@@ -21,15 +21,20 @@ namespace MAUITestAPP
         {
             InitializeComponent();
 
-            var places = PlaceRequestHandler.GetPlaceList();
-            if (places != null)
-            {
-                Console.WriteLine(places.Count);
-                foreach (var place in places)
+            Task.Run(() => 
+            { 
+                var places = PlaceRequestHandler.GetPlaceList();
+                if (places != null)
                 {
-                    places_portion.Add(GetPanel(place));
+                    Dispatcher.Dispatch(() => 
+                    {
+                        foreach (var place in places)
+                        {
+                            places_portion.Add(GetPanel(place));
+                        }
+                    });
                 }
-            }
+            });
 
             search_btn.Clicked += delegate 
             {

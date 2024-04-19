@@ -7,8 +7,10 @@
 
         function loadMapScenario(addrs_1, addrs_2)
         {
+            var area = document.getElementById("myMap");
+            area.innerHTML = "";
 
-            var map = new Microsoft.Maps.Map(document.getElementById("myMap"),
+            var map = new Microsoft.Maps.Map(area,
                 {
                     credentials: 'AjMKxLlsExzF24GrXDTAAVrTv11D_UA9vYV2FMjFelfyrqIUHINH43gEdpjX7Ypw'
                 });
