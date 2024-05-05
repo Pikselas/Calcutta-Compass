@@ -7,6 +7,10 @@ public partial class EntryPage : ContentPage
 	public EntryPage()
 	{
 		InitializeComponent();
+        place_list.Add(GetPanel());
+        place_list.Add(GetPanel());
+        place_list.Add(GetPanel());
+        place_list.Add(GetPanel());
     }
 
 	private void gotoMainPage(object sender , EventArgs e)
@@ -37,10 +41,13 @@ public partial class EntryPage : ContentPage
         var rect1 = new RoundRectangle();
         rect1.CornerRadius = 20;
         border2.StrokeShape = rect1;
+        
         var img = new Image();
         img.Source = "birla.jpg";
         img.Aspect = Aspect.AspectFill;
         border2.Content = img;
+
+        layout.Add(border2);
 
         //verticalstacklayout1
         var layout2 = new VerticalStackLayout();
@@ -52,19 +59,26 @@ public partial class EntryPage : ContentPage
         label.FontFamily = "Monospace";
         label.Text = "Hello World";
         label.LineBreakMode = LineBreakMode.TailTruncation;
-        layout.Add(label);
+        layout2.Add(label);
+
+        layout.Add(layout2);
 
         //horizontalstacklayout2
         var layout3 = new HorizontalStackLayout();
+        
         var img1 = new Image();
         img1.Source = "location.png";
+        
         var label1 = new Label();
         label1.FontSize = 15;
         label1.Text = "Birlaaaaaaaaaa";
         label1.FontFamily = "Monospace";
         label1.VerticalOptions = LayoutOptions.Center;
-        layout3.Add(label1);
+
         layout3.Add(img1);
+        layout3.Add(label1);
+
+        layout2.Add(layout3);
 
         //starting scroll view
         var view = new ScrollView();
@@ -83,6 +97,8 @@ public partial class EntryPage : ContentPage
         var rect2 = new RoundRectangle();
         rect2.CornerRadius = 15;
         border3.StrokeShape = rect2;
+
+        view.Content = layout4; 
 
         var img2 = new Image();
         img2.Source = "birla.jpg";
@@ -124,7 +140,7 @@ public partial class EntryPage : ContentPage
         layout2.Add(border5);
 
         border.Content = layout;
-        border.Content = layout2;
+       // border.Content = layout2;
 
         return border;
     }

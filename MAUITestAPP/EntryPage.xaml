@@ -57,51 +57,139 @@
 -->
 
 
-    <VerticalStackLayout>
+    <Grid Padding="10">
 
-        <ScrollView>
-            <VerticalStackLayout Padding="10,10">
+        <ScrollView VerticalOptions="Start" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+            <HorizontalStackLayout Spacing="10"  x:Name="place_list">
 
-                <Border StrokeShape="RoundRectangle 25" HeightRequest="200" BackgroundColor="#e1ebfa" Stroke="Transparent">
-                    
-                    <HorizontalStackLayout Padding="10" Spacing="5">
-                        
-                        <Border WidthRequest="150" StrokeShape="RoundRectangle 20" Stroke="Transparent">
-                            <Image Source="birla.jpg" Aspect="AspectFill"/>
-                        </Border>
-                        
-                        <VerticalStackLayout Padding="10">
-                            
-                            <Label FontSize="22" WidthRequest="180" FontFamily="Monospace" Text="Hello World!! rhegjegher" LineBreakMode= "TailTruncation"/>
-                            
-                            <HorizontalStackLayout>
-                                <Image Source="location.png"/>
-                                <Label Text="Backalley" FontSize="15" FontFamily="Monospace" VerticalOptions="Center"/>
-                            </HorizontalStackLayout>
-                            
-                            <ScrollView Margin="5" WidthRequest="150" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                                <HorizontalStackLayout Spacing="5">
-                                    <Border Stroke="Transparent" StrokeShape="RoundRectangle 15" WidthRequest="100" HeightRequest="70">
-                                        <Image Source="birla.jpg" Aspect="AspectFill"/>
-                                    </Border>
-                                    <Border Stroke="Transparent" StrokeShape="RoundRectangle 15" WidthRequest="100" HeightRequest="70">
-                                        <Image Source="birla.jpg" Aspect="AspectFill"/>
-                                    </Border>
-                                </HorizontalStackLayout>
-                            </ScrollView>
-                            
-                            <Border Stroke="Transparent" HeightRequest="25" StrokeShape="RoundRectangle 25" BackgroundColor="#2b282e">
-                                <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" TextColor="AliceBlue" Text="science-exibition"/>
-                            </Border>
-                        
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-
-            </VerticalStackLayout>
+            </HorizontalStackLayout>
         </ScrollView>
 
-    </VerticalStackLayout>
+        <ScrollView VerticalOptions="CenterAndExpand" Padding="5" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+            <HorizontalStackLayout  Spacing="10">
+
+                <Border HeightRequest="300" WidthRequest="250" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#2f2b36">
+
+                    <Grid>
+
+                        <Border Stroke="Transparent" Margin="-50,-100,0,0" StrokeShape="RoundRectangle 0 , 100 , 100 , 100" HeightRequest="200" WidthRequest="200">
+                            <Image Source="foods.jpg" Aspect="AspectFill"/>
+                        </Border>
+
+                        <Border WidthRequest="200" HeightRequest="200" Margin="10,50,0,0" Stroke="Black" StrokeShape="RoundRectangle 5">
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="Transparent" Offset="0.0"></GradientStop>
+                                    <GradientStop Color="#913155" Offset="1.0"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <VerticalStackLayout Padding="5">
+                                <Label Text="Explore the" FontSize="15" FontAttributes="Italic" TextColor="#4a0439"></Label>
+                                <Label Text="Foods" Margin="5,-10,0,0" FontSize="40" TextDecorations="Underline" FontAttributes="Bold" TextColor="#ffffff"></Label>
+                                <Label Text="Puchka on the street,
+                                Misti doi, sweet retreat,
+                                Kolkata's food, a treat."
+                                FontAttributes="Italic" TextColor="#ece4ed" Padding="15,0,0,0" FontSize="Body"/>
+                            </VerticalStackLayout>
+                            
+                        </Border>
+                    </Grid>
+
+                </Border>
+
+                <Border HeightRequest="300" WidthRequest="250" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#03302d">
+
+                    <Grid>
+
+                        <Border Stroke="Transparent" Margin="-50,-100,0,0" StrokeShape="RoundRectangle 0 , 100 , 100 , 100" HeightRequest="200" WidthRequest="200">
+                            <Image Source="season.jpg" Aspect="AspectFill"/>
+                        </Border>
+
+                        <Border WidthRequest="200" HeightRequest="200" Margin="10,50,0,0" Stroke="Black" StrokeShape="RoundRectangle 5">
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="Transparent" Offset="0.0"></GradientStop>
+                                    <GradientStop Color="#017a56" Offset="1.0"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <VerticalStackLayout Padding="5">
+                                <Label Text="Explore the" FontSize="15" FontAttributes="Italic" TextColor="#4a0439"></Label>
+                                <Label Text="Seasons" Margin="5,-10,0,0" FontSize="40" TextDecorations="Underline" FontAttributes="Bold" TextColor="#ffffff"></Label>
+                                <Label Text="Puchka on the street,
+                                Misti doi, sweet retreat,
+                                Kolkata's food, a treat."
+                                FontAttributes="Italic" TextColor="#ece4ed" Padding="15,0,0,0" FontSize="Body"/>
+                            </VerticalStackLayout>
+
+                        </Border>
+                    </Grid>
+
+                </Border>
+
+                <Border HeightRequest="300" WidthRequest="250" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#0d0d5e">
+
+                    <Grid>
+                        <Border Stroke="Transparent" Margin="-50,-100,0,0" StrokeShape="RoundRectangle 0 , 100 , 100 , 100" HeightRequest="200" WidthRequest="200">
+                            <Image Source="festival.jpg" Aspect="AspectFill"/>
+                        </Border>
+
+                        <Border WidthRequest="200" HeightRequest="200" Margin="10,50,0,0" Stroke="Black" StrokeShape="RoundRectangle 5">
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="Transparent" Offset="0.0"></GradientStop>
+                                    <GradientStop Color="#6b48f7" Offset="1.0"></GradientStop>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <VerticalStackLayout Padding="5">
+                                <Label Text="Explore the" FontSize="15" FontAttributes="Italic" TextColor="#4a0439"></Label>
+                                <Label Text="Festivals" Margin="5,-10,0,0" FontSize="40" TextDecorations="Underline" FontAttributes="Bold" TextColor="#ffffff"></Label>
+                                <Label Text="Puchka on the street,Misti doi, sweet retreat,
+                Kolkata's food, a treat."
+                FontAttributes="Italic" TextColor="#ece4ed" Padding="15,0,0,0" FontSize="Body"/>
+                            </VerticalStackLayout>
+
+                        </Border>
+                    </Grid>
+
+                </Border>
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <Border Stroke="Transparent" StrokeShape="RoundRectangle 20" HeightRequest="200" VerticalOptions="End" BackgroundColor="#1b0a24">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="Transparent" Offset="0.3"></GradientStop>
+                    <GradientStop Color="#26baff" Offset="0.65"></GradientStop>
+                    <GradientStop Color="#1e066b" Offset="1.0"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <HorizontalStackLayout>
+                <Border HorizontalOptions="Start" Stroke="Transparent" WidthRequest="200" HeightRequest="200">
+                    <Image Source="victoria.png"/>
+                </Border>
+
+                <VerticalStackLayout Padding="10,10,0,10" HorizontalOptions="End">
+
+                    <Label WidthRequest="145" FontSize="13" FontAttributes="Bold" TextColor="#c8e5fa" Text="I found the world bathed in a wonderful radiance, with waves of beauty and joy swelling up on every side."></Label>
+
+                    <Label HorizontalOptions="End" Margin="5 , 5 , 0 ,0" FontAttributes="Italic" FontSize="12" TextColor="#d9d9ff" Text="- Rabindranath Tagore"></Label>
+
+                    <Button Clicked="gotoMainPage" Margin="20 , 15 , 0 , 0" Text="explore" BackgroundColor="#110a4d" FontAttributes="Italic"></Button>
+                    
+                </VerticalStackLayout>
+                
+            </HorizontalStackLayout>
+            
+        </Border>
+
+    </Grid>
 
 
 </ContentPage>
