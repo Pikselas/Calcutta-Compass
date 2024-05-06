@@ -7,22 +7,15 @@ namespace MAUITestAPP
     {
         public class PlaceDataType
         {
-            public string? place_id { get; set; }
-            public string? place_name { get; set; }
-            public string? image_src { get; set; }
-            public string? location { get; set; }
-            public float? rating { get; set; }
+            public string name { get; set; }
+            public string address { get; set; }
+            public float lat { get; set; }
+            public float ln { get; set; }
+            public float rating { get; set; }
+            public string[] photos { get; set; }
+            public string[] description { get; set; }
         }
-        public class PlaceDetailsType
-        {
-            public string? place_name { get; set; }
-            public string? image_src { get; set; }
-            public float? rating { get; set; }
-            public string? description { get; set; }
-            public string? location { get; set; }
-            public float? lat { get; set; }
-            public float? lon { get; set; }
-        }
+
         public class PlaceImageType
         {
             public string? thumbnail { get; set; }
@@ -45,11 +38,6 @@ namespace MAUITestAPP
         public static List<PlaceDataType>? GetPlaceList()
         {
             return makeRequest<PlaceDataType>("get_place");
-        }
-        public static PlaceDetailsType? GetPlaceDetails(string id)
-        {
-            var data = makeRequest<PlaceDetailsType>("get_place_details/" + id);
-            return data != null ? data[0] : null;
         }
         public static List<PlaceDataType>? SearchPlace(string name)
         {

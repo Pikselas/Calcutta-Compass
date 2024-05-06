@@ -8,15 +8,6 @@ namespace MAUITestAPP
 
     public partial class MainPage : ContentPage
     {
-        private class PlaceDataType
-        {
-            public string place_id { get; set; }
-            public string place_name { get; set; }
-            public string image_src { get; set; }
-            public string location { get; set; }
-            public float rating { get; set; }
-        }
-
         public MainPage()
         {
             InitializeComponent();
@@ -49,9 +40,9 @@ namespace MAUITestAPP
                 }
             };
         }
-        private void GotoPlace(string place_id)
+        private void GotoPlace(PlaceRequestHandler.PlaceDataType place_data)
         {
-            var navigationParameter = new Dictionary<string, object> { { "place_id", place_id } };
+            var navigationParameter = new Dictionary<string, object> { { "place_data", place_data } };
             Shell.Current.GoToAsync(nameof(ExplorePlacePage), navigationParameter);
         }
 
@@ -324,7 +315,7 @@ namespace MAUITestAPP
             var grid = new Grid();
             grid.HeightRequest = 350;
             var img = new Image();
-            img.Source = data.image_src;
+            img.Source = data.photos.FirstOrDefault();
             img.Aspect = Aspect.AspectFill;
             grid.Add(img);
             grid.Add(layout);
@@ -361,7 +352,7 @@ namespace MAUITestAPP
             var layout3 = new VerticalStackLayout();
             layout3.Padding = 10;
             var label2 = new Label();
-            label2.Text = data.place_name;
+            label2.Text = data.name;
             label2.TextColor = Color.Parse("WhiteSmoke");
             label2.VerticalOptions = LayoutOptions.Center;
             label2.FontSize = 30;
@@ -374,7 +365,7 @@ namespace MAUITestAPP
             var loc_image = new Image { Source = "location_blue.png" };
 
             var label3 = new Label();
-            label3.Text = data.location;
+            label3.Text = data.address;
             label3.TextColor = Color.Parse("Azure");
             label3.VerticalOptions = LayoutOptions.Center;
 
@@ -388,7 +379,7 @@ namespace MAUITestAPP
             imgbtn1.VerticalOptions = LayoutOptions.End;
             imgbtn1.Clicked += delegate
             {
-                GotoPlace(data.place_id);
+                GotoPlace(data);
             };
         
             grid.Add(imgbtn1);

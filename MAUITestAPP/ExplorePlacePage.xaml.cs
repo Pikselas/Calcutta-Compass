@@ -1,8 +1,5 @@
 namespace MAUITestAPP;
 
-using CommunityToolkit.Maui.Alerts;
-using Microsoft.Maui.ApplicationModel;
-
 public partial class ExplorePlacePage : ContentPage, IQueryAttributable
 {
 
@@ -20,22 +17,22 @@ public partial class ExplorePlacePage : ContentPage, IQueryAttributable
     {
         Task.Run(() => 
         {
-            var place_data = PlaceRequestHandler.GetPlaceDetails($"{query["place_id"]}");
+            var place_data =  (PlaceRequestHandler.PlaceDataType)query["place_id"];
             if (place_data != null)
             {
                 Dispatcher.Dispatch(() =>
                 {
-                    place_image_main.Source = place_data.image_src;
-                    place_title.Text = place_data.place_name;
+                    place_image_main.Source = place_data.photos.FirstOrDefault();
+                    place_title.Text = place_data.name;
                     rating.Text = place_data.rating.ToString();
-                    location.Text = place_data.location;
-                    description.Text = place_data.description;
+                    location.Text = place_data.address;
+                    description.Text = String.Join('.' , place_data.description);
 
-                    place_location = place_data.location;
-                    place_name = place_data.place_name;
+                    place_location = place_data.address;
+                    place_name = place_data.name;
 
                     lat = place_data.lat;
-                    lon = place_data.lon;
+                    lon = place_data.ln;
 
                 });
             }
