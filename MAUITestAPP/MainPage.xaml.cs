@@ -21,13 +21,13 @@ namespace MAUITestAPP
                     {
                         foreach (var place in places)
                         {
-                            places_portion.Add(GetPanel(place));
+                            places_container.Add(GetPanel(place));
                         }
                     });
                 }
             });
 
-            search_btn.Clicked += delegate 
+            /*search_btn.Clicked += delegate 
             {
                 var places = PlaceRequestHandler.SearchPlace(entry_field.Text);
                 if (places != null)
@@ -38,7 +38,7 @@ namespace MAUITestAPP
                         places_portion.Add(GetPanel(place));
                     }
                 }
-            };
+            };*/
         }
         private void GotoPlace(PlaceRequestHandler.PlaceDataType place_data)
         {
@@ -302,89 +302,218 @@ namespace MAUITestAPP
             return border;
         }
 
-        private IView GetPanel(PlaceRequestHandler.PlaceDataType data)
+        /* private IView GetPanel(PlaceRequestHandler.PlaceDataType data)
+         {
+             var border = new Border();
+             border.Stroke = Brush.Transparent;
+
+             var rect = new RoundRectangle();
+             rect.CornerRadius = 45;
+             border.StrokeShape = rect;
+             var layout = new StackLayout();
+             layout.Padding = 10;
+             var grid = new Grid();
+             grid.HeightRequest = 350;
+             var img = new Image();
+             img.Source = data.photos.FirstOrDefault();
+             img.Aspect = Aspect.AspectFill;
+             grid.Add(img);
+             grid.Add(layout);
+             border.Content = grid;
+
+             grid = new Grid();
+             var border2 = new Border();
+             grid.Add(border2);
+             border2.BackgroundColor = Color.Parse("AntiqueWhite");
+             border2.HorizontalOptions = LayoutOptions.Start;
+             rect = new RoundRectangle();
+             rect.CornerRadius = 25;
+             border2.StrokeShape = rect;
+             border2.WidthRequest = 70;
+             border2.HeightRequest = 40;
+             var layout2 = new HorizontalStackLayout();
+             layout2.Padding = 5;
+             var img2 = new Image();
+             img2.Source = "star.png";
+             layout2.Add(img2);
+             var label = new Label();
+             label.Text = data.rating.ToString();
+             label.FontSize = 20;
+             layout2.Add(label);
+             var imgbtn = new ImageButton();
+             imgbtn.Source = "favourite_unselected.png";
+             imgbtn.HorizontalOptions = LayoutOptions.End;
+             grid.Add(imgbtn);
+             border2.Content = layout2;
+             layout.Add(grid);
+
+             grid = new Grid();
+             grid.VerticalOptions = LayoutOptions.EndAndExpand;
+             var layout3 = new VerticalStackLayout();
+             layout3.Padding = 10;
+             var label2 = new Label();
+             label2.Text = data.name;
+             label2.TextColor = Color.Parse("WhiteSmoke");
+             label2.VerticalOptions = LayoutOptions.Center;
+             label2.FontSize = 30;
+             label2.WidthRequest = 150;
+             label2.HorizontalOptions = LayoutOptions.Start;
+             layout3.Add(label2);
+
+             var layout4 = new HorizontalStackLayout();
+
+             var loc_image = new Image { Source = "location_blue.png" };
+
+             var label3 = new Label();
+             label3.Text = data.address;
+             label3.TextColor = Color.Parse("Azure");
+             label3.VerticalOptions = LayoutOptions.Center;
+
+             layout4.Add(loc_image);
+             layout4.Add(label3);
+             layout3.Add(layout4);
+
+             var imgbtn1 = new ImageButton();
+             imgbtn1.Source = "goto_explore.png";
+             imgbtn1.HorizontalOptions = LayoutOptions.End;
+             imgbtn1.VerticalOptions = LayoutOptions.End;
+             imgbtn1.Clicked += delegate
+             {
+                 GotoPlace(data);
+             };
+
+             grid.Add(imgbtn1);
+             grid.Add(layout3);
+             layout.Add(grid);
+
+             return border;
+         } */
+
+        private IView GetPanel(PlaceRequestHandler.PlaceDataType place)
         {
+            //first border
             var border = new Border();
             border.Stroke = Brush.Transparent;
-
             var rect = new RoundRectangle();
-            rect.CornerRadius = 45;
-            border.StrokeShape = rect;
-            var layout = new StackLayout();
-            layout.Padding = 10;
-            var grid = new Grid();
-            grid.HeightRequest = 350;
-            var img = new Image();
-            img.Source = data.photos.FirstOrDefault();
-            img.Aspect = Aspect.AspectFill;
-            grid.Add(img);
-            grid.Add(layout);
-            border.Content = grid;
-
-            grid = new Grid();
-            var border2 = new Border();
-            grid.Add(border2);
-            border2.BackgroundColor = Color.Parse("AntiqueWhite");
-            border2.HorizontalOptions = LayoutOptions.Start;
-            rect = new RoundRectangle();
             rect.CornerRadius = 25;
-            border2.StrokeShape = rect;
-            border2.WidthRequest = 70;
-            border2.HeightRequest = 40;
-            var layout2 = new HorizontalStackLayout();
-            layout2.Padding = 5;
-            var img2 = new Image();
-            img2.Source = "star.png";
-            layout2.Add(img2);
+            border.StrokeShape = rect;
+            border.HeightRequest = 200;
+            border.BackgroundColor = Color.FromHex("#e1ebfa");
+
+            //horizontalstacklayout1
+            var layout = new HorizontalStackLayout();
+            layout.Padding = 10;
+            layout.Spacing = 5;
+
+            //second border
+            var border2 = new Border();
+            border2.WidthRequest = 150;
+            border2.Stroke = Brush.Transparent;
+            var rect1 = new RoundRectangle();
+            rect1.CornerRadius = 20;
+            border2.StrokeShape = rect1;
+
+            var img = new Image();
+            img.Source = place.photos.FirstOrDefault();
+            img.Aspect = Aspect.AspectFill;
+            border2.Content = img;
+
+            layout.Add(border2);
+
+            //verticalstacklayout1
+            var layout2 = new VerticalStackLayout();
+            layout2.Padding = 10;
+
             var label = new Label();
-            label.Text = data.rating.ToString();
-            label.FontSize = 20;
+            label.FontSize = 22;
+            label.WidthRequest = 180;
+            label.FontFamily = "Monospace";
+            label.Text = place.name;
+            label.LineBreakMode = LineBreakMode.TailTruncation;
             layout2.Add(label);
-            var imgbtn = new ImageButton();
-            imgbtn.Source = "favourite_unselected.png";
-            imgbtn.HorizontalOptions = LayoutOptions.End;
-            grid.Add(imgbtn);
-            border2.Content = layout2;
-            layout.Add(grid);
-              
-            grid = new Grid();
-            grid.VerticalOptions = LayoutOptions.EndAndExpand;
-            var layout3 = new VerticalStackLayout();
-            layout3.Padding = 10;
-            var label2 = new Label();
-            label2.Text = data.name;
-            label2.TextColor = Color.Parse("WhiteSmoke");
-            label2.VerticalOptions = LayoutOptions.Center;
-            label2.FontSize = 30;
-            label2.WidthRequest = 150;
-            label2.HorizontalOptions = LayoutOptions.Start;
-            layout3.Add(label2);
 
+            layout.Add(layout2);
+
+            //horizontalstacklayout2
+            var layout3 = new HorizontalStackLayout();
+
+            var img1 = new Image();
+            img1.Source = "location.png";
+
+            var label1 = new Label();
+            label1.FontSize = 15;
+            label1.Text = place.address;
+            label1.FontFamily = "Monospace";
+            label1.WidthRequest = 160;
+            label1.LineBreakMode = LineBreakMode.TailTruncation;
+            label1.VerticalOptions = LayoutOptions.Center;
+
+            layout3.Add(img1);
+            layout3.Add(label1);
+
+            layout2.Add(layout3);
+
+            //starting scroll view
+            var view = new ScrollView();
+            view.Margin = 5;
+            view.WidthRequest = 150;
+            view.Orientation = ScrollOrientation.Horizontal;
+            view.HorizontalScrollBarVisibility = ScrollBarVisibility.Never;
+
+            //horizontalStackLayout in scroll view
             var layout4 = new HorizontalStackLayout();
+            layout4.Spacing = 5;
+            view.Content = layout4;
 
-            var loc_image = new Image { Source = "location_blue.png" };
-
-            var label3 = new Label();
-            label3.Text = data.address;
-            label3.TextColor = Color.Parse("Azure");
-            label3.VerticalOptions = LayoutOptions.Center;
-
-            layout4.Add(loc_image);
-            layout4.Add(label3);
-            layout3.Add(layout4);
-
-            var imgbtn1 = new ImageButton();
-            imgbtn1.Source = "goto_explore.png";
-            imgbtn1.HorizontalOptions = LayoutOptions.End;
-            imgbtn1.VerticalOptions = LayoutOptions.End;
-            imgbtn1.Clicked += delegate
+            foreach (var photo in place.photos.AsSpan(1))
             {
-                GotoPlace(data);
-            };
-        
-            grid.Add(imgbtn1);
-            grid.Add(layout3);
-            layout.Add(grid);
+                var border3 = new Border();
+                border3.Stroke = Brush.Transparent;
+                border3.WidthRequest = 100;
+                border3.HeightRequest = 70;
+                var rect2 = new RoundRectangle();
+                rect2.CornerRadius = 15;
+                border3.StrokeShape = rect2;
+
+                var img2 = new Image();
+                img2.Source = photo;
+                img2.Aspect = Aspect.AspectFill;
+                
+                border3.Content = img2;
+                layout4.Add(border3);
+            }
+
+            //border after scroll view
+            var border5 = new Border();
+            border5.Stroke = Brush.Transparent;
+            border5.HeightRequest = 25;
+            var rect4 = new RoundRectangle();
+            rect4.CornerRadius = 25;
+            border5.StrokeShape = rect4;
+            border5.BackgroundColor = Color.FromHex("#2b282e");
+            
+            var rating_layout = new StackLayout();
+            border5.Content = rating_layout;
+
+            var label2 = new Label();
+            label2.FontAttributes = FontAttributes.Bold;
+            //label2.VerticalOptions = LayoutOptions.Center;
+            label2.HorizontalOptions = LayoutOptions.Center;
+            label2.TextColor = Color.Parse("AliceBlue");
+            label2.Text = place.rating.ToString();
+
+            var star_img = new Image();
+            star_img.Source = "star.jpg";
+            star_img.HorizontalOptions = LayoutOptions.Center;
+
+            rating_layout.Add(label2);
+            rating_layout.Add(star_img);
+
+            layout2.Add(view);
+            layout2.Add(border5);
+
+            border.Content = layout;
+            // border.Content = layout2;
 
             return border;
         }

@@ -3,27 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUITestAPP.MainPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#caded8">
+             BackgroundColor="#161936">
+
 
     <Grid>
-        <Image Grid.Row="0" Source="navbar.jpg" VerticalOptions="Start" Aspect="AspectFill" HeightRequest="90"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
 
-        <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,90,0,0">
-            <VerticalStackLayout x:Name="places_portion" Padding="15" Spacing="10">
-                
+        <Border Stroke="#00a2d4" HeightRequest="50" StrokeThickness="3" Grid.Row="0" WidthRequest="300" StrokeShape="RoundRectangle 25">
+            <Entry Placeholder="Search.." HorizontalTextAlignment="Center" FontSize="17" FontAttributes="Bold"/>
+        </Border>
+        
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="10" x:Name="places_container" Padding="10">
+
             </VerticalStackLayout>
         </ScrollView>
 
-        <HorizontalStackLayout VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="80" Padding="15">
-            <Border StrokeShape="RoundRectangle 50,0,50,0" Stroke="Transparent">
-                <Entry x:Name="entry_field" Background="Black" Opacity="0.7" HorizontalTextAlignment="Center" WidthRequest="225" TextColor="WhiteSmoke" Placeholder="Search...">
-
-                </Entry>
-            </Border>
-            <Border Margin="-5,0,0,0" StrokeShape="RoundRectangle 0,50,0,50" Stroke="Transparent">
-                <ImageButton x:Name="search_btn" Aspect="Center" WidthRequest="50" Source="search.png" BackgroundColor="#d4fff2"/>
-            </Border>
-            <ImageButton Source="go.png" HorizontalOptions="End" Clicked="ImageButton_Clicked"/>
-        </HorizontalStackLayout>
+        <StackLayout Grid.Row="2">
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="10" Spacing="3" BackgroundColor="Transparent">
+                <Border StrokeShape="RoundRectangle 10">
+                    <ImageButton Source="home_icon.png"/>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10">
+                    <ImageButton Source="search_icon.png"/>
+                </Border>
+            </HorizontalStackLayout>
+        </StackLayout>
     </Grid>
 </ContentPage>
