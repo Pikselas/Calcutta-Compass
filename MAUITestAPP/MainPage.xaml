@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUITestAPP.MainPage"
-             Shell.NavBarIsVisible="False"
-             BackgroundColor="#161936">
+             Shell.NavBarIsVisible="False">
 
 
     <Grid>
@@ -13,8 +12,8 @@
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
-        <Border Stroke="#00a2d4" HeightRequest="50" StrokeThickness="3" Grid.Row="0" WidthRequest="300" StrokeShape="RoundRectangle 25">
-            <Entry Placeholder="Search.." HorizontalTextAlignment="Center" FontSize="17" FontAttributes="Bold"/>
+        <Border Stroke="#929bd6" HeightRequest="50" StrokeThickness="3" Grid.Row="0" WidthRequest="300" StrokeShape="RoundRectangle 25">
+            <Entry x:Name="search_entry" Completed="search_entry_Completed"  Placeholder="Search.." HorizontalTextAlignment="Center" FontSize="17" FontAttributes="Bold"/>
         </Border>
         
         <ScrollView Grid.Row="1">

@@ -12,12 +12,12 @@ namespace MAUITestAPP
         {
             InitializeComponent();
 
-            Task.Run(() => 
-            { 
+            Task.Run(() =>
+            {
                 var places = PlaceRequestHandler.GetPlaceList();
                 if (places != null)
                 {
-                    Dispatcher.Dispatch(() => 
+                    Dispatcher.Dispatch(() =>
                     {
                         foreach (var place in places)
                         {
@@ -26,6 +26,8 @@ namespace MAUITestAPP
                     });
                 }
             });
+
+            //places_container.Add(GetPanel(new PlaceRequestHandler.PlaceDataType()));
 
             /*search_btn.Clicked += delegate 
             {
@@ -391,14 +393,23 @@ namespace MAUITestAPP
 
         private IView GetPanel(PlaceRequestHandler.PlaceDataType place)
         {
+            var tap_gesture = new TapGestureRecognizer();
+            tap_gesture.Tapped += (s, e) =>
+            {
+                GotoPlace(place);
+            };
+
             //first border
             var border = new Border();
             border.Stroke = Brush.Transparent;
+
+            border.GestureRecognizers.Add(tap_gesture);
+
             var rect = new RoundRectangle();
             rect.CornerRadius = 25;
             border.StrokeShape = rect;
             border.HeightRequest = 200;
-            border.BackgroundColor = Color.FromHex("#e1ebfa");
+            border.BackgroundColor = Color.FromHex("#cdecfa");
 
             //horizontalstacklayout1
             var layout = new HorizontalStackLayout();
@@ -465,22 +476,25 @@ namespace MAUITestAPP
             layout4.Spacing = 5;
             view.Content = layout4;
 
-            foreach (var photo in place.photos.AsSpan(1))
+            if (place.photos.Length > 1)
             {
-                var border3 = new Border();
-                border3.Stroke = Brush.Transparent;
-                border3.WidthRequest = 100;
-                border3.HeightRequest = 70;
-                var rect2 = new RoundRectangle();
-                rect2.CornerRadius = 15;
-                border3.StrokeShape = rect2;
+                foreach (var photo in place.photos.AsSpan(1))
+                {
+                    var border3 = new Border();
+                    border3.Stroke = Brush.Transparent;
+                    border3.WidthRequest = 100;
+                    border3.HeightRequest = 70;
+                    var rect2 = new RoundRectangle();
+                    rect2.CornerRadius = 15;
+                    border3.StrokeShape = rect2;
 
-                var img2 = new Image();
-                img2.Source = photo;
-                img2.Aspect = Aspect.AspectFill;
-                
-                border3.Content = img2;
-                layout4.Add(border3);
+                    var img2 = new Image();
+                    img2.Source = photo;
+                    img2.Aspect = Aspect.AspectFill;
+
+                    border3.Content = img2;
+                    layout4.Add(border3);
+                }
             }
 
             //border after scroll view
@@ -491,23 +505,28 @@ namespace MAUITestAPP
             rect4.CornerRadius = 25;
             border5.StrokeShape = rect4;
             border5.BackgroundColor = Color.FromHex("#2b282e");
-            
+
             var rating_layout = new StackLayout();
             border5.Content = rating_layout;
+
+            var hor_layout = new HorizontalStackLayout();
+            hor_layout.HorizontalOptions = LayoutOptions.Center;
+
+            rating_layout.Add(hor_layout);
 
             var label2 = new Label();
             label2.FontAttributes = FontAttributes.Bold;
             //label2.VerticalOptions = LayoutOptions.Center;
-            label2.HorizontalOptions = LayoutOptions.Center;
+            label2.VerticalOptions = LayoutOptions.Center;
             label2.TextColor = Color.Parse("AliceBlue");
             label2.Text = place.rating.ToString();
 
             var star_img = new Image();
-            star_img.Source = "star.jpg";
-            star_img.HorizontalOptions = LayoutOptions.Center;
+            star_img.Source = "star_smol.jpg";
+            star_img.VerticalOptions = LayoutOptions.Center;
 
-            rating_layout.Add(label2);
-            rating_layout.Add(star_img);
+            hor_layout.Add(label2);
+            hor_layout.Add(star_img);
 
             layout2.Add(view);
             layout2.Add(border5);
@@ -543,6 +562,25 @@ namespace MAUITestAPP
             {
                 await Toast.Make(recognitionResult.Exception?.Message ?? "Unable to recognize speech").Show(CancellationToken.None);
             }
+        }
+
+
+        private void search_entry_Completed(object sender, EventArgs e)
+        {
+            places_container.Clear();
+            Dispatcher.Dispatch(() =>
+            {
+                var places = PlaceRequestHandler.SearchPlace(search_entry.Text);
+                if (places != null)
+                {
+                    places_container.Clear();
+
+                    foreach (var place in places)
+                    {
+                        places_container.Add(GetPanel(place));
+                    }
+                }
+            });
         }
     }
 }

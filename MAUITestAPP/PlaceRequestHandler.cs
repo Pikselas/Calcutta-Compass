@@ -7,11 +7,11 @@ namespace MAUITestAPP
     {
         public class PlaceDataType
         {
-            public string name { get; set; }
-            public string address { get; set; }
-            public float lat { get; set; }
-            public float ln { get; set; }
-            public float rating { get; set; }
+            public string? name { get; set; }
+            public string? address { get; set; }
+            public float? lat { get; set; }
+            public float? ln { get; set; }
+            public float? rating { get; set; }
             public string[] photos { get; set; }
             public string[] description { get; set; }
         }

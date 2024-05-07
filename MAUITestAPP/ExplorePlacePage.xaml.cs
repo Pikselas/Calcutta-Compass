@@ -17,7 +17,7 @@ public partial class ExplorePlacePage : ContentPage, IQueryAttributable
     {
         Task.Run(() => 
         {
-            var place_data =  (PlaceRequestHandler.PlaceDataType)query["place_id"];
+            var place_data =  (PlaceRequestHandler.PlaceDataType)query["place_data"];
             if (place_data != null)
             {
                 Dispatcher.Dispatch(() =>
