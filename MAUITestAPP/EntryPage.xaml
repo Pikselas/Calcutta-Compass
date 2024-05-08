@@ -59,12 +59,9 @@
 
     <Grid Padding="10">
 
-        <ScrollView VerticalOptions="Start" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-            <HorizontalStackLayout Spacing="10"  x:Name="place_list">
-
-            </HorizontalStackLayout>
-        </ScrollView>
-
+        <HorizontalStackLayout Spacing="10">
+            
+        </HorizontalStackLayout>
         <ScrollView VerticalOptions="CenterAndExpand" Padding="5" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
             <HorizontalStackLayout  Spacing="10">
 

@@ -7,6 +7,8 @@
             InitializeComponent();
             Routing.RegisterRoute(nameof(MainPage),typeof(MainPage));
             Routing.RegisterRoute(nameof(ExplorePage) , typeof(ExplorePage));
+            Routing.RegisterRoute(nameof(FeedBackPage), typeof(FeedBackPage));
+            Routing.RegisterRoute(nameof(TranslatorPage), typeof(TranslatorPage));
             Routing.RegisterRoute(nameof(ExplorePlacePage), typeof(ExplorePlacePage));
         }
     }

@@ -26,21 +26,6 @@ namespace MAUITestAPP
                     });
                 }
             });
-
-            //places_container.Add(GetPanel(new PlaceRequestHandler.PlaceDataType()));
-
-            /*search_btn.Clicked += delegate 
-            {
-                var places = PlaceRequestHandler.SearchPlace(entry_field.Text);
-                if (places != null)
-                {
-                    places_portion.Clear();
-                    foreach (var place in places)
-                    {
-                        places_portion.Add(GetPanel(place));
-                    }
-                }
-            };*/
         }
         private void GotoPlace(PlaceRequestHandler.PlaceDataType place_data)
         {
@@ -537,31 +522,9 @@ namespace MAUITestAPP
             return border;
         }
 
-        private async void ImageButton_Clicked(object sender, EventArgs e)
+        private void ImageButton_Clicked(object sender, EventArgs e)
         {
-            CancellationTokenSource source = new CancellationTokenSource();
-            CancellationToken token = source.Token;
-            var isGranted = await SpeechToText.Default.RequestPermissions(token);
-            if (!isGranted)
-            {
-                await Toast.Make("Permission not granted").Show(CancellationToken.None);
-                return;
-            }
-            string txt = "";
-            var recognitionResult = await SpeechToText.Default.ListenAsync(
-                                                CultureInfo.GetCultureInfo("uk-ua"),
-                                                new Progress<string>((partialText) =>
-                                               {
-                                                   txt += partialText + " ";
-                                               }), token);
-            if (recognitionResult.IsSuccessful)
-            {
-                txt = recognitionResult.Text;
-            }
-            else
-            {
-                await Toast.Make(recognitionResult.Exception?.Message ?? "Unable to recognize speech").Show(CancellationToken.None);
-            }
+            Shell.Current.GoToAsync(nameof(TranslatorPage));
         }
 
 
@@ -581,6 +544,11 @@ namespace MAUITestAPP
                     }
                 }
             });
+        }
+
+        private void ImageButton_Clicked_1(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(FeedBackPage));
         }
     }
 }

@@ -18,17 +18,17 @@
         
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Spacing="10" x:Name="places_container" Padding="10">
-
+                
             </VerticalStackLayout>
         </ScrollView>
 
         <StackLayout Grid.Row="2">
             <HorizontalStackLayout HorizontalOptions="Center" Margin="10" Spacing="3" BackgroundColor="Transparent">
                 <Border StrokeShape="RoundRectangle 10">
-                    <ImageButton Source="home_icon.png"/>
+                    <ImageButton Clicked="ImageButton_Clicked_1" Source="home_icon.png"/>
                 </Border>
                 <Border StrokeShape="RoundRectangle 10">
-                    <ImageButton Source="search_icon.png"/>
+                    <ImageButton Clicked="ImageButton_Clicked" Source="search_icon.png"/>
                 </Border>
             </HorizontalStackLayout>
         </StackLayout>
