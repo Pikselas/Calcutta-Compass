@@ -5,75 +5,60 @@
              x:Class="MAUITestAPP.EntryPage"
              Title="EntryPage"
              Shell.NavBarIsVisible="False">
-    <!--<Grid >
-        <Image Grid.Row="0" Source="entry_image.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
-
-        <VerticalStackLayout TranslationY="25" Padding="5" Spacing="20">
-
-            <VerticalStackLayout Spacing="-30">
-                <Label Text="discover" FontSize="45" TextColor="#000066" Margin="25,0,0,0"/>
-                <Label Text="Kolkata" FontFamily="BellFast" FontSize="85" FontAttributes="Bold" TextColor="AliceBlue" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
-                <Label Text="the city of joy!" Margin="-25,0,0,0" FontAttributes="Italic" FontSize="22" TextColor="#000014" Padding="5" HorizontalOptions="EndAndExpand"/>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout 
-                Padding="50,0,50,0"
-                HorizontalOptions="CenterAndExpand">
-                <Label
-                       Padding="15"
-                       Opacity="0.7"
-                       BackgroundColor="AliceBlue"
-                       HorizontalOptions="CenterAndExpand"
-                       TextColor="#070033" 
-                       FontSize="25"
-                       FontAttributes="Bold"
-                       TextDecorations="Underline"
-                       FontFamily="BellFast"    
-                    
-                    Text="The city of joy and sorrow, of art and chaos, of history and modernity.
-                          
-                          A city that embraces its contradictions and celebrates its diversity.
-                          A city that never sleeps, never stops, never surrenders.
-                          A city that is more than a place, it is a feeling.
-                          A feeling that stays with you forever." />
-
-                <Label
-                    HorizontalOptions="EndAndExpand"
-                    FontAttributes="Italic"
-                    TextColor="#101329"
-                    FontSize="20"
-                    Text="-Yokohama bomber"/>
-
-            </VerticalStackLayout>
-
-            <ImageButton Source="exp2.png" Clicked="gotoMainPage">
-                <ImageButton.Shadow>
-                    <Shadow Brush="Black" Radius="75"/>
-                </ImageButton.Shadow>
-            </ImageButton>
-
-        </VerticalStackLayout>
-    </Grid> 
--->
-
 
     <Grid Padding="10">
 
-        <HorizontalStackLayout Spacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="225"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#d2fffe">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Margin="10" Stroke="Transparent" StrokeShape="RoundRectangle 20" BackgroundColor="#f2fffe">
+                    <Grid RowSpacing="5" ColumnSpacing="5" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ImageButton Grid.Row="0" Grid.Column="0" Source="translate_icon.png"/>
+                        <ImageButton Grid.Row="0" Grid.Column="1"  Source="feedback_icon.png"/>
+                        <ImageButton Grid.Row="1" Grid.Column="0" Source="find_icon.ong"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="1" Stroke="Transparent">
+                    <Image Source="second_bridge.jpg" Aspect="AspectFill"/>
+                </Border>
+                
+            </Grid>
             
-        </HorizontalStackLayout>
-        <ScrollView VerticalOptions="CenterAndExpand" Padding="5" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+        </Border>
+
+        <ScrollView Grid.Row="1" VerticalOptions="CenterAndExpand" Padding="5" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
             <HorizontalStackLayout  Spacing="10">
 
-                <Border HeightRequest="300" WidthRequest="250" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#2f2b36">
+                <Border WidthRequest="250" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#2f2b36">
 
                     <Grid>
 
-                        <Border Stroke="Transparent" Margin="-50,-100,0,0" StrokeShape="RoundRectangle 0 , 100 , 100 , 100" HeightRequest="200" WidthRequest="200">
+                        <Border Stroke="Transparent" VerticalOptions="Start" HorizontalOptions="Start" StrokeShape="RoundRectangle 0 , 100 , 100 , 100" HeightRequest="200" WidthRequest="200">
                             <Image Source="foods.jpg" Aspect="AspectFill"/>
                         </Border>
 
-                        <Border WidthRequest="200" HeightRequest="200" Margin="10,50,0,0" Stroke="Black" StrokeShape="RoundRectangle 5">
+                        <Border WidthRequest="200" Margin="10,50,0,25" Stroke="Black" StrokeShape="RoundRectangle 5">
 
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -90,21 +75,21 @@
                                 Kolkata's food, a treat."
                                 FontAttributes="Italic" TextColor="#ece4ed" Padding="15,0,0,0" FontSize="Body"/>
                             </VerticalStackLayout>
-                            
+
                         </Border>
                     </Grid>
 
                 </Border>
 
-                <Border HeightRequest="300" WidthRequest="250" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#03302d">
+                <Border WidthRequest="250" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#03302d">
 
                     <Grid>
 
-                        <Border Stroke="Transparent" Margin="-50,-100,0,0" StrokeShape="RoundRectangle 0 , 100 , 100 , 100" HeightRequest="200" WidthRequest="200">
+                        <Border Stroke="Transparent" VerticalOptions="Start" HorizontalOptions="Start" StrokeShape="RoundRectangle 0 , 100 , 100 , 100" HeightRequest="200" WidthRequest="200">
                             <Image Source="season.jpg" Aspect="AspectFill"/>
                         </Border>
 
-                        <Border WidthRequest="200" HeightRequest="200" Margin="10,50,0,0" Stroke="Black" StrokeShape="RoundRectangle 5">
+                        <Border WidthRequest="200"  Margin="10,50,0,25" Stroke="Black" StrokeShape="RoundRectangle 5">
 
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -127,14 +112,14 @@
 
                 </Border>
 
-                <Border HeightRequest="300" WidthRequest="250" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#0d0d5e">
+                <Border WidthRequest="250" StrokeShape="RoundRectangle 20" Stroke="Transparent" BackgroundColor="#0d0d5e">
 
                     <Grid>
-                        <Border Stroke="Transparent" Margin="-50,-100,0,0" StrokeShape="RoundRectangle 0 , 100 , 100 , 100" HeightRequest="200" WidthRequest="200">
+                        <Border Stroke="Transparent" VerticalOptions="Start" HorizontalOptions="Start" StrokeShape="RoundRectangle 0 , 100 , 100 , 100" HeightRequest="200" WidthRequest="200">
                             <Image Source="festival.jpg" Aspect="AspectFill"/>
                         </Border>
 
-                        <Border WidthRequest="200" HeightRequest="200" Margin="10,50,0,0" Stroke="Black" StrokeShape="RoundRectangle 5">
+                        <Border WidthRequest="200" Margin="10,50,0,25" Stroke="Black" StrokeShape="RoundRectangle 5">
 
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -158,7 +143,7 @@
             </HorizontalStackLayout>
         </ScrollView>
 
-        <Border Stroke="Transparent" StrokeShape="RoundRectangle 20" HeightRequest="200" VerticalOptions="End" BackgroundColor="#1b0a24">
+        <Border Grid.Row="2" Stroke="Transparent" StrokeShape="RoundRectangle 20" HeightRequest="200" VerticalOptions="End" BackgroundColor="#1b0a24">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="Transparent" Offset="0.3"></GradientStop>
@@ -179,14 +164,12 @@
                     <Label HorizontalOptions="End" Margin="5 , 5 , 0 ,0" FontAttributes="Italic" FontSize="12" TextColor="#d9d9ff" Text="- Rabindranath Tagore"></Label>
 
                     <Button Clicked="gotoMainPage" Margin="20 , 15 , 0 , 0" Text="explore" BackgroundColor="#110a4d" FontAttributes="Italic"></Button>
-                    
+
                 </VerticalStackLayout>
-                
+
             </HorizontalStackLayout>
-            
+
         </Border>
 
     </Grid>
-
-
 </ContentPage>
