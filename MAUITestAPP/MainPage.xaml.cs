@@ -548,7 +548,7 @@ namespace MAUITestAPP
 
         private void ImageButton_Clicked_1(object sender, EventArgs e)
         {
-            Shell.Current.GoToAsync(nameof(FeedBackPage));
+            Shell.Current.GoToAsync(nameof(EntryPage));
         }
     }
 }

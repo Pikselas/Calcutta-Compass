@@ -6,7 +6,9 @@
              Shell.NavBarIsVisible="False">
 
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <Button Text="OPEN MAP" VerticalOptions="Start" Clicked="OpenInMap" HeightRequest="40"/>
-        <WebView Margin="0,50,0,0" x:Name="myWebView" Source="www/viewmap.html" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+        <WebView x:Name="myWebView" Source="www/viewmap.html" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+        <Border BackgroundColor="#cfedff" Margin="0,0,0,10" Stroke="#4fade3" VerticalOptions="End" WidthRequest="70" HeightRequest="70" StrokeThickness="3" StrokeShape="RoundRectangle 40" Padding="10">
+            <ImageButton Source="location_blue.png" Clicked="OpenInMap"/>
+        </Border>
     </Grid>
 </ContentPage>

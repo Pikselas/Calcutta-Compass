@@ -22,6 +22,13 @@ namespace MAUITestAPP
             public string? content { get; set; }
         }
 
+        public class SubSearchItemType
+        {
+            public string? url { get; set; }
+            public string? title { get; set; }
+            public string? description { get; set; }
+        }
+
         private static readonly string remote_url = "https://musical-goldfish-75444r96g7qhrrwg-3000.app.github.dev";
         
         private PlaceRequestHandler() { }
@@ -46,6 +53,10 @@ namespace MAUITestAPP
         public static List<PlaceImageType>? GetPlaceImages(string name)
         {
             return makeRequest<PlaceImageType>("get_place_images/" + name);
+        }
+        public static List<SubSearchItemType>? GeSubSearchItems(string query)
+        {
+            return makeRequest<SubSearchItemType>("search_subitems/" + query);
         }
     }
 

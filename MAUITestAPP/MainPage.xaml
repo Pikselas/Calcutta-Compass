@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <Border Stroke="#929bd6" HeightRequest="50" StrokeThickness="3" Grid.Row="0" WidthRequest="300" StrokeShape="RoundRectangle 25">
-            <Entry x:Name="search_entry" Completed="search_entry_Completed"  Placeholder="Search.." HorizontalTextAlignment="Center" FontSize="17" FontAttributes="Bold"/>
+            <Entry x:Name="search_entry" Margin="0,0,0,-10" Completed="search_entry_Completed"  Placeholder="Search.." HorizontalTextAlignment="Center" FontSize="17" FontAttributes="Bold"/>
         </Border>
         
         <ScrollView Grid.Row="1">
@@ -26,9 +26,6 @@
             <HorizontalStackLayout HorizontalOptions="Center" Margin="10" Spacing="3" BackgroundColor="Transparent">
                 <Border StrokeShape="RoundRectangle 10">
                     <ImageButton Clicked="ImageButton_Clicked_1" Source="home_icon.png"/>
-                </Border>
-                <Border StrokeShape="RoundRectangle 10">
-                    <ImageButton Clicked="ImageButton_Clicked" Source="search_icon.png"/>
                 </Border>
             </HorizontalStackLayout>
         </StackLayout>

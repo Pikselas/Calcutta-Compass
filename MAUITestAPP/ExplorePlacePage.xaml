@@ -27,7 +27,7 @@
                 <Border Margin="10,0,0,0" Padding="5" StrokeShape="RoundRectangle 25">
                     <HorizontalStackLayout>
                         <Image Source="location.png"/>
-                        <Label x:Name="location" FontSize="14" VerticalOptions="Center"/>
+                        <Label x:Name="location" FontSize="14" VerticalOptions="Center" MaximumWidthRequest="150" LineBreakMode="TailTruncation" HeightRequest="20"/>
                     </HorizontalStackLayout>
                 </Border>
 
