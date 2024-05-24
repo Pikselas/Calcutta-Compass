@@ -11,7 +11,7 @@
 
         <ScrollView>
             <VerticalStackLayout Padding="10" x:Name="search_result" Spacing="10">
-
+                
             </VerticalStackLayout>
         </ScrollView>
         

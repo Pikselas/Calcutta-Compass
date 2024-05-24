@@ -160,11 +160,11 @@
 
                 <VerticalStackLayout Padding="10,10,0,10" HorizontalOptions="End">
 
-                    <Label WidthRequest="145" FontSize="13" FontAttributes="Bold" TextColor="#c8e5fa" Text="I found the world bathed in a wonderful radiance, with waves of beauty and joy swelling up on every side."></Label>
+                    <Label WidthRequest="145" MaximumHeightRequest="120" FontSize="13" FontAttributes="Bold" TextColor="#c8e5fa" Text="I found the world bathed in a wonderful radiance, with waves of beauty and joy swelling up on every side."></Label>
 
                     <Label HorizontalOptions="End" Margin="5 , 5 , 0 ,0" FontAttributes="Italic" FontSize="12" TextColor="#d9d9ff" Text="- Rabindranath Tagore"></Label>
 
-                    <Button Clicked="gotoMainPage" Margin="20 , 15 , 0 , 0" Text="explore" BackgroundColor="#110a4d" FontAttributes="Italic"></Button>
+                    <Button Clicked="gotoMainPage" Margin="20 , 15 , 0 , 0" Text="explore" BackgroundColor="#110a4d" TextColor="White" FontAttributes="Italic"></Button>
 
                 </VerticalStackLayout>
 

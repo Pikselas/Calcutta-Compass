@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUITestAPP.IntroductionPage"
+             Title="IntroductionPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid Padding="25" BackgroundColor="#e3fcfc">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Source="app_front.png" Aspect="AspectFit"/>
+        <Label Grid.Row="1" HorizontalOptions="Center" FontFamily="Bellfast" TextDecorations="Underline" FontAttributes="Bold" FontSize="45" Text="Safar E Kolkata"/>
+        <Label Grid.Row="2" HorizontalOptions="Center" FontSize="15" Text="The ultimate kolkata travel guide" TextDecorations="Underline"/>
+
+        <Border BackgroundColor="#a8ffdf" Stroke="Transparent" Margin="0,10,0,0" Grid.Row="3" StrokeShape="RoundRectangle 25">
+            <Grid Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+
+                <Label HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" Grid.Row="0" Text="A kolkata guide book for exploring the beauty of the city"/>
+
+                <Border Grid.Row="1" StrokeShape="RoundRectangle 30" Stroke="Transparent">
+                    <Button Text="Enter" BackgroundColor="#00ab6c" TextColor="White" Clicked="Button_Clicked" FontAttributes="Bold"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+    
+</ContentPage>

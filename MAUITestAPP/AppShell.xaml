@@ -9,20 +9,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:EntryPage}"
-        Route="EntryPage" />
-
-    <FlyoutItem Title="Cats"
-                Icon="go.png">
-         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Dogs"
-                Icon="go.png">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate local:EntryPage}" Route="EntryPage"/>
-        </Tab>
-    </FlyoutItem>
+        ContentTemplate="{DataTemplate local:IntroductionPage}"
+        Route="IntroductionPage" />
 
 </Shell>
